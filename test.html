@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part A – Theory Quiz (40 points) | IMA Gas Field</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
+        .container { max-width: 1100px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #003366; text-align: center; }
+        .section { margin-bottom: 40px; }
+        .section h2 { background: #003366; color: white; padding: 10px; border-radius: 5px; }
+        .question { margin-bottom: 20px; padding: 15px; background: #f9f9f9; border-left: 5px solid #003366; }
+        .options label { display: block; margin: 8px 0; cursor: pointer; }
+        .score { font-size: 1.2em; font-weight: bold; color: #003366; margin-top: 20px; }
+        button { background: #003366; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #005599; }
+        .correct { color: green; font-weight: bold; }
+        .wrong { color: red; }
+        .correct-answer-box {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: #e6f4ea;
+            border-left: 4px solid #28a745;
+            border-radius: 4px;
+            color: #155724;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .correct-answer-box::before {
+            content: "✅ Đáp án đúng: ";
+        }
+        label.highlight-correct {
+            background: #d4edda;
+            border-radius: 4px;
+            padding: 2px 6px;
+            color: #155724;
+            font-weight: bold;
+        }
+        label.highlight-wrong {
+            color: #721c24;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Part A – Theory Quiz (40 points)</h1>
+        <p style="text-align:center; color:#666;">Dựa trên P&amp;ID IMA HP Separator (NG-IMA-11-DORS-318009) và các tài liệu chuẩn (API 14C, Shutdown Philosophy, C&amp;E, Safe Chart...)</p>
+        
+        <!-- SECTION 1: PFD, P&ID reading -->
+        <div class="section">
+            <h2>1. PFD, P&amp;ID reading – symbols, line numbers, legend (8 câu / 8 điểm)</h2>
+            
+            <div class="question">
+                <p><strong>Câu 1:</strong> Trên P&amp;ID, thiết bị V-8151 có tag đầy đủ là gì?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="A"> A. V-8151 IMA HP Separator</label>
+                    <label><input type="radio" name="q1" value="B"> B. V-8151 – IMA High Pressure Separator</label>
+                    <label><input type="radio" name="q1" value="C"> C. V8151 – HP Separator</label>
+                    <label><input type="radio" name="q1" value="D"> D. Separator V-8151</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 2:</strong> Ký hiệu “FC” trên van thể hiện chức năng gì?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="A"> A. Fail Close</label>
+                    <label><input type="radio" name="q2" value="B"> B. Fail Open</label>
+                    <label><input type="radio" name="q2" value="C"> C. Flow Control</label>
+                    <label><input type="radio" name="q2" value="D"> D. Fail Safe</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 3:</strong> Khi nào sử dụng DBB trong bản vẽ P&amp;ID?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="A"> A. Rating Class > 600 </label>
+                    <label><input type="radio" name="q3" value="B"> B. Rating class < 600 </label>
+                    <label><input type="radio" name="q3" value="C"> C. Toxic liquid</label>
+                    <label><input type="radio" name="q3" value="D"> D. A and C </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 4:</strong> Ký hiệu “NC” trên van nghĩa là gì?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="A"> A. Normally Closed</label>
+                    <label><input type="radio" name="q4" value="B"> B. Normally Open</label>
+                    <label><input type="radio" name="q4" value="C"> C. No Control</label>
+                    <label><input type="radio" name="q4" value="D"> D. Non-Return Check</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 5:</strong> Trên P&amp;ID có bao nhiêu bơm condensate (P-8151 A/B)?</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="A"> A. 1</label>
+                    <label><input type="radio" name="q5" value="B"> B. 2</label>
+                    <label><input type="radio" name="q5" value="C"> C. 3</label>
+                    <label><input type="radio" name="q5" value="D"> D. 4</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 6:</strong> Ký hiệu “ESD” trên van thể hiện van thuộc hệ thống nào?</p>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="A"> A. Emergency Shutdown Valve</label>
+                    <label><input type="radio" name="q6" value="B"> B. Emergency Stop Device</label>
+                    <label><input type="radio" name="q6" value="C"> C. Electrical Shutdown</label>
+                    <label><input type="radio" name="q6" value="D"> D. Equipment Shutdown</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 7:</strong> Dòng “6”-B-81024-B45 trên P&amp;ID thuộc class nào?</p>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="A"> A. Class B45</label>
+                    <label><input type="radio" name="q7" value="B"> B. Class B</label>
+                    <label><input type="radio" name="q7" value="C"> C. Class 45</label>
+                    <label><input type="radio" name="q7" value="D"> D. Không xác định được</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 8:</strong> Đường PSV inlet kích cỡ như thế nào so với inlet orifce PSV?</p>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="A"> A. Nhỏ hơn</label>
+                    <label><input type="radio" name="q8" value="B"> B. Bằng</label>
+                    <label><input type="radio" name="q8" value="C"> C. Nhỏ hơn hoặc bằng</label>
+                    <label><input type="radio" name="q8" value="D"> D. Lớn hơn hoặc bằng</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: API 14C -->
+        <div class="section">
+            <h2>2. API 14C – Safety devices, required protection per equipment (6 câu / 6 điểm)</h2>
+            
+            <div class="question">
+                <p><strong>Câu 9:</strong> Theo API 14C, Thiết bị an toàn PSV có thể bỏ khỏi thiết kế flowline trong trường hợp nào?</p>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="A"> A. Không được bỏ</label>
+                    <label><input type="radio" name="q9" value="B"> B. Khi MAWP nhỏ hơn áp suất thiết kế </label>
+                    <label><input type="radio" name="q9" value="C"> C. Đường óng được thiết kế với MAWP lớn hơn áp suất đóng giếng</label>
+                    <label><input type="radio" name="q9" value="D"> D. Được bảo vệ bởi 1 PSV ở hạ nguồn và giữa có thiết bị hạn chế dòng chảy</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 10:</strong> API 14C yêu cầu van một chiều cho pump (FSV) có thể bỏ được không?</p>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="A"> A. Được nếu chủ đầu tư cho phép</label>
+                    <label><input type="radio" name="q10" value="B"> B. Không được bỏ</label>
+                    <label><input type="radio" name="q10" value="C"> C. Được nếu thay thế bằng 2 con van cô lập</label>
+                   
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 11:</strong> Thiết bị nào theo API 14C phải có Temperature Safety High (TSH)?</p>
+                <div class="options">
+                    <label><input type="radio" name="q11" value="A"> A. Heater / Fired equipment</label>
+                    <label><input type="radio" name="q11" value="B"> B. Separator only</label>
+                    <label><input type="radio" name="q11" value="C"> C. Pump</label>
+                    <label><input type="radio" name="q11" value="D"> D. Valve</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 12:</strong> Theo API 14C, van ESD trên separator phải được kích hoạt bởi?</p>
+                <div class="options">
+                    <label><input type="radio" name="q12" value="A"> A. PSH + LSL + TSH</label>
+                    <label><input type="radio" name="q12" value="B"> B. Chỉ PSH</label>
+                    <label><input type="radio" name="q12" value="C"> C. Chỉ LSL</label>
+                    <label><input type="radio" name="q12" value="D"> D. Manual only</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 13:</strong> Thiết bị PSL theo API 14C ở đầu hút của pump có thể bỏ trong trường hợp nào ?</p>
+                <div class="options">
+                    <label><input type="radio" name="q13" value="A"> A. Không được bỏ</label>
+                    <label><input type="radio" name="q13" value="B"> B. Bơm vận hành thủ công và có người giám sát liên tục</label>
+                    <label><input type="radio" name="q13" value="C"> C. Đã có biện pháp containment (chứa chất lỏng) đầy đủ</label>
+                    <label><input type="radio" name="q13" value="D"> D. B + C </label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 14:</strong> API 14C quy định Level Safety High (LSH) dùng để bảo vệ?</p>
+                <div class="options">
+                    <label><input type="radio" name="q14" value="A"> A. Overfill protection</label>
+                    <label><input type="radio" name="q14" value="B"> B. Dry run protection</label>
+                    <label><input type="radio" name="q14" value="C"> C. Pressure protection</label>
+                    <label><input type="radio" name="q14" value="D"> D. Temperature protection</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: Piping specification -->
+        <div class="section">
+            <h2>3. Piping specification – pipe class, material, rating (5 câu / 5 điểm)</h2>
+            
+            <div class="question">
+                <p><strong>Câu 15:</strong> Class F03 trên P&amp;ID thường tương ứng với?</p>
+                <div class="options">
+                    <label><input type="radio" name="q15" value="A"> A. 150# rating</label>
+                    <label><input type="radio" name="q15" value="B"> B. 300# rating</label>
+                    <label><input type="radio" name="q15" value="C"> C. 600# rating</label>
+                    <label><input type="radio" name="q15" value="D"> D. 900# rating</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 16:</strong> Material “CS” trên P&amp;ID nghĩa là?</p>
+                <div class="options">
+                    <label><input type="radio" name="q16" value="A"> A. Carbon Steel</label>
+                    <label><input type="radio" name="q16" value="B"> B. Stainless Steel</label>
+                    <label><input type="radio" name="q16" value="C"> C. Cast Steel</label>
+                    <label><input type="radio" name="q16" value="D"> D. Chrome Steel</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 17:</strong> Pipe class “W” thường dùng cho?</p>
+                <div class="options">
+                    <label><input type="radio" name="q17" value="A"> A. Gas service</label>
+                    <label><input type="radio" name="q17" value="B"> B. Water service</label>
+                    <label><input type="radio" name="q17" value="C"> C. Condensate service</label>
+                    <label><input type="radio" name="q17" value="D"> D. Flare service</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 18:</strong> Rating 600# phù hợp với áp suất thiết kế khoảng?</p>
+                <div class="options">
+                    <label><input type="radio" name="q18" value="A"> A. 93 barg</label>
+                    <label><input type="radio" name="q18" value="B"> B. 40 barg</label>
+                    <label><input type="radio" name="q18" value="C"> C. 10 barg</label>
+                    <label><input type="radio" name="q18" value="D"> D. 200 barg</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 19:</strong> Trên P&amp;ID, line 18"-P-81001-H03 thuộc class nào?</p>
+                <div class="options">
+                    <label><input type="radio" name="q19" value="A"> A. Class 150</label>
+                    <label><input type="radio" name="q19" value="B"> B. Class 600</label>
+                    <label><input type="radio" name="q19" value="C"> C. Class 900</label>
+                    <label><input type="radio" name="q19" value="D"> D. Class 1500 </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: Instrument -->
+        <div class="section">
+            <h2>4. Instrument – tags, control philosophy, alarm types (5 câu / 5 điểm)</h2>
+            
+            <div class="question">
+                <p><strong>Câu 20:</strong> Tag “PT-8151” trên P&amp;ID là?</p>
+                <div class="options">
+                    <label><input type="radio" name="q20" value="A"> A. Pressure Transmitter</label>
+                    <label><input type="radio" name="q20" value="B"> B. Pressure Switch</label>
+                    <label><input type="radio" name="q20" value="C"> C. Pressure Indicator</label>
+                    <label><input type="radio" name="q20" value="D"> D. Pressure Control Valve</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 21:</strong> Alarm “81-LAHH”-514 nghĩa là?</p>
+                <div class="options">
+                    <label><input type="radio" name="q21" value="A"> A. High High alarm and trip/shut down of inlet flow</label>
+                    <label><input type="radio" name="q21" value="B"> B. High High alarm and trip/shut down of outlet gas </label>
+                    <label><input type="radio" name="q21" value="C"> C. High alarm and no action </label>
+                    <label><input type="radio" name="q21" value="D"> D. High High alarm and trip pump</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 22:</strong> Tag “LIC” trên separator thể hiện?</p>
+                <div class="options">
+                    <label><input type="radio" name="q22" value="A"> A. Level Indicator Control </label>
+                    <label><input type="radio" name="q22" value="B"> B. Level Switch Low Low</label>
+                    <label><input type="radio" name="q22" value="C"> C. Low Level Alarm only</label>
+                    <label><input type="radio" name="q22" value="D"> D. Low Level Alarm trip</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 23:</strong> Chữ “HOLD” trên van nghĩa là?</p>
+                <div class="options">
+                    <label><input type="radio" name="q23" value="A"> A. Vui lòng xem chú thích hold, có thể hold về size, có thể hold về vị trí</label>
+                    <label><input type="radio" name="q23" value="B"> B. Van tự động đóng</label>
+                    <label><input type="radio" name="q23" value="C"> C. Van tự động mở</label>
+                    <label><input type="radio" name="q23" value="D"> D. Van giữ nguyên vị trí khi mất tín hiệu</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 24:</strong> Tag “ESD” trên van thể hiện?</p>
+                <div class="options">
+                    <label><input type="radio" name="q24" value="A"> A. Emergency Shutdown Valve</label>
+                    <label><input type="radio" name="q24" value="B"> B. Electrical Shutdown</label>
+                    <label><input type="radio" name="q24" value="C"> C. Equipment Shutdown Device</label>
+                    <label><input type="radio" name="q24" value="D"> D. Emergency Stop</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: Shutdown hierarchy -->
+        <div class="section">
+            <h2>5. Shutdown hierarchy &amp; ESD levels (4 câu / 4 điểm)</h2>
+            
+            <div class="question">
+                <p><strong>Câu 25:</strong> ESD-1 là mức shutdown nào?</p>
+                <div class="options">
+                    <label><input type="radio" name="q25" value="A"> A. Plant wide shutdown (cao nhất)</label>
+                    <label><input type="radio" name="q25" value="B"> B. Unit shutdown</label>
+                    <label><input type="radio" name="q25" value="C"> C. Equipment shutdown</label>
+                    <label><input type="radio" name="q25" value="D"> D. Local shutdown</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 26:</strong> Van SDV thuộc ESD-2 thì mức shutdown là?</p>
+                <div class="options">
+                    <label><input type="radio" name="q26" value="A"> A. Unit level</label>
+                    <label><input type="radio" name="q26" value="B"> B. Plant wide</label>
+                    <label><input type="radio" name="q26" value="C"> C. Equipment level</label>
+                    <label><input type="radio" name="q26" value="D"> D. Local only</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 27:</strong> PSD (Process Shutdown) là mức nào so với ESD?</p>
+                <div class="options">
+                    <label><input type="radio" name="q27" value="A"> A. Thấp hơn ESD</label>
+                    <label><input type="radio" name="q27" value="B"> B. Cao hơn ESD</label>
+                    <label><input type="radio" name="q27" value="C"> C. Bằng ESD</label>
+                    <label><input type="radio" name="q27" value="D"> D. Không liên quan</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 28:</strong> PRESSURE/VACUUM RELIEF VALVE thường dùng cho?</p>
+                <div class="options">
+                    <label><input type="radio" name="q28" value="A"> A. Tank có áp</label>
+                    <label><input type="radio" name="q28" value="B"> B. tank khí quyển</label>
+                    <label><input type="radio" name="q28" value="C"> C. Bơm nước</label>
+                    <label><input type="radio" name="q28" value="D"> D. Máy nén</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 6: Cause & Effect -->
+        <div class="section">
+            <h2>6. Cause &amp; Effect matrix logic (4 câu / 4 điểm)</h2>
+            
+            <div class="question">
+                <p><strong>Câu 29:</strong> Trong C&amp;E matrix, “Cause” là?</p>
+                <div class="options">
+                    <label><input type="radio" name="q29" value="A"> A. Initiator (PT, LT, TSH...)</label>
+                    <label><input type="radio" name="q29" value="B"> B. Action (valve close)</label>
+                    <label><input type="radio" name="q29" value="C"> C. Alarm</label>
+                    <label><input type="radio" name="q29" value="D"> D. Setpoint</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 30:</strong> “Effect” trong C&amp;E matrix là?</p>
+                <div class="options">
+                    <label><input type="radio" name="q30" value="A"> A. Hành động (valve close, trip pump...)</label>
+                    <label><input type="radio" name="q30" value="B"> B. Nguyên nhân</label>
+                    <label><input type="radio" name="q30" value="C"> C. Alarm</label>
+                    <label><input type="radio" name="q30" value="D"> D. Setpoint</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 31:</strong> Một Cause có thể có nhiều Effect?</p>
+                <div class="options">
+                    <label><input type="radio" name="q31" value="A"> A. Đúng</label>
+                    <label><input type="radio" name="q31" value="B"> B. Sai</label>
+                    <label><input type="radio" name="q31" value="C"> C. Chỉ 1 Effect</label>
+                    <label><input type="radio" name="q31" value="D"> D. Không có Effect</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 32:</strong> C&amp;E matrix được xây dựng sau tài liệu nào?</p>
+                <div class="options">
+                    <label><input type="radio" name="q32" value="A"> A. Shutdown Hierarchy</label>
+                    <label><input type="radio" name="q32" value="B"> B. P&amp;ID</label>
+                    <label><input type="radio" name="q32" value="C"> C. Safe Chart</label>
+                    <label><input type="radio" name="q32" value="D"> D. Equipment datasheet</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 7: Safe chart -->
+        <div class="section">
+            <h2>7. Safe chart – operating envelope, setpoints (4 câu / 4 điểm)</h2>
+            
+            <div class="question">
+                <p><strong>Câu 33:</strong> Safe Chart thể hiện vùng nào?</p>
+                <div class="options">
+                    <label><input type="radio" name="q33" value="A"> A. Normal operating + Alarm + Trip</label>
+                    <label><input type="radio" name="q33" value="B"> B. Chỉ trip points</label>
+                    <label><input type="radio" name="q33" value="C"> C. Chỉ alarm</label>
+                    <label><input type="radio" name="q33" value="D"> D. Chỉ design pressure</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 34:</strong> Setpoint “HH” trên Safe Chart thường là?</p>
+                <div class="options">
+                    <label><input type="radio" name="q34" value="A"> A. High High trip</label>
+                    <label><input type="radio" name="q34" value="B"> B. High alarm</label>
+                    <label><input type="radio" name="q34" value="C"> C. Normal high</label>
+                    <label><input type="radio" name="q34" value="D"> D. Low trip</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 35:</strong> Safe Chart được vẽ sau tài liệu nào?</p>
+                <div class="options">
+                    <label><input type="radio" name="q35" value="A"> A. C&amp;E Matrix</label>
+                    <label><input type="radio" name="q35" value="B"> B. Shutdown Hierarchy</label>
+                    <label><input type="radio" name="q35" value="C"> C. P&amp;ID</label>
+                    <label><input type="radio" name="q35" value="D"> D. HAZOP</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 36:</strong> Operating envelope trên Safe Chart bao gồm?</p>
+                <div class="options">
+                    <label><input type="radio" name="q36" value="A"> A. Normal + Alarm + Trip zone</label>
+                    <label><input type="radio" name="q36" value="B"> B. Chỉ normal operating</label>
+                    <label><input type="radio" name="q36" value="C"> C. Chỉ design limit</label>
+                    <label><input type="radio" name="q36" value="D"> D. Chỉ MAWP</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 8: Relief & Flare -->
+        <div class="section">
+            <h2>8. Relief &amp; Flare – scenarios, API 520/521 basics (4 câu / 4 điểm)</h2>
+            
+            <div class="question">
+                <p><strong>Câu 37:</strong> API 520 dùng để?</p>
+                <div class="options">
+                    <label><input type="radio" name="q37" value="A"> A. Thiết kế Pressure Relief Valve</label>
+                    <label><input type="radio" name="q37" value="B"> B. Thiết kế flare system</label>
+                    <label><input type="radio" name="q37" value="C"> C. Thiết kế separator</label>
+                    <label><input type="radio" name="q37" value="D"> D. Thiết kế bơm</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 38:</strong> API 521 dùng để?</p>
+                <div class="options">
+                    <label><input type="radio" name="q38" value="A"> A. Pressure-relieving and Depressuring Systems</label>
+                    <label><input type="radio" name="q38" value="B"> B. Relief valve sizing</label>
+                    <label><input type="radio" name="q38" value="C"> C. Flare stack design</label>
+                    <label><input type="radio" name="q38" value="D"> D. Pipe class</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 39:</strong> Scenario “Blocked outlet” cần relief cho trường hợp?</p>
+                <div class="options">
+                    <label><input type="radio" name="q39" value="A"> A. Control valve hỏng</label>
+                    <label><input type="radio" name="q39" value="B"> B. Người vận hành quên mở van</label>
+                    <label><input type="radio" name="q39" value="C"> C. Người vận hành quên đóng van</label>
+                    <label><input type="radio" name="q39" value="D"> D. Giãn nở nhiệt</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 40:</strong> “Fire case” theo API 521 là?</p>
+                <div class="options">
+                    <label><input type="radio" name="q40" value="A"> A. Relief do hỏa hoạn</label>
+                    <label><input type="radio" name="q40" value="B"> B. Relief do áp suất cao</label>
+                    <label><input type="radio" name="q40" value="C"> C. Relief do mức cao</label>
+                    <label><input type="radio" name="q40" value="D"> D. Relief do nhiệt độ cao</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 9: Equipment datasheet -->
+        <div class="section">
+            <h2>9. Equipment datasheet – pressure vessel, MAWP, nozzles (4 câu / 4 điểm)</h2>
+            
+            <div class="question">
+                <p><strong>Câu 41:</strong> MAWP là?</p>
+                <div class="options">
+                    <label><input type="radio" name="q41" value="A"> A. Maximum Allowable Working Pressure</label>
+                    <label><input type="radio" name="q41" value="B"> B. Minimum Allowable Working Pressure</label>
+                    <label><input type="radio" name="q41" value="C"> C. Maximum Allowable Temperature</label>
+                    <label><input type="radio" name="q41" value="D"> D. Design Pressure</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 42:</strong> Trên datasheet V-8151, Design Pressure là bao nhiêu?</p>
+                <div class="options">
+                    <label><input type="radio" name="q42" value="A"> A. 10 barg</label>
+                    <label><input type="radio" name="q42" value="B"> B. 18 barg</label>
+                    <label><input type="radio" name="q42" value="C"> C. 4.2 barg</label>
+                    <label><input type="radio" name="q42" value="D"> D. 80°C</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 43:</strong> Nozzle trên pressure vessel dùng để?</p>
+                <div class="options">
+                    <label><input type="radio" name="q43" value="A"> A. Kết nối pipe, instrument, manhole</label>
+                    <label><input type="radio" name="q43" value="B"> B. Chỉ nối pipe</label>
+                    <label><input type="radio" name="q43" value="C"> C. Chỉ lắp manhole</label>
+                    <label><input type="radio" name="q43" value="D"> D. Chỉ lắp relief valve</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p><strong>Câu 44:</strong> MAWP luôn lớn hơn Design Pressure?</p>
+                <div class="options">
+                    <label><input type="radio" name="q44" value="A"> A. Đúng</label>
+                    <label><input type="radio" name="q44" value="B"> B. Sai</label>
+                    <label><input type="radio" name="q44" value="C"> C. Bằng nhau</label>
+                    <label><input type="radio" name="q44" value="D"> D. Không liên quan</label>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center; margin-top:30px;">
+            <button onclick="submitQuiz()">Nộp bài &amp; Xem kết quả</button>
+            <div class="score" id="score"></div>
+        </div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            let score = 0;
+            const answers = {
+                q1: "A", q2: "A", q3: "D", q4: "A", q5: "B",
+                q6: "A", q7: "A", q8: "D", q9: "C", q10: "B",
+                q11: "A", q12: "A", q13: "D", q14: "A", q15: "C",
+                q16: "A", q17: "B", q18: "A", q19: "D", q20: "A",
+                q21: "A", q22: "A", q23: "A", q24: "A", q25: "A",
+                q26: "A", q27: "A", q28: "B", q29: "A", q30: "A",
+                q31: "A", q32: "A", q33: "A", q34: "A", q35: "A",
+                q36: "A", q37: "A", q38: "A", q39: "B", q40: "A",
+                q41: "A", q42: "B", q43: "A", q44: "A"
+            };
+
+            // Remove any previously shown answer boxes (if re-submitting)
+            document.querySelectorAll('.correct-answer-box').forEach(el => el.remove());
+            document.querySelectorAll('label.highlight-correct, label.highlight-wrong').forEach(el => {
+                el.classList.remove('highlight-correct', 'highlight-wrong');
+            });
+
+            for (let i = 1; i <= 44; i++) {
+                const qKey = 'q' + i;
+                const correctVal = answers[qKey];
+                const radios = document.getElementsByName(qKey);
+                let selected = null;
+
+                for (let radio of radios) {
+                    if (radio.checked) {
+                        selected = radio.value;
+                    }
+                    // Disable radio after submit
+                    radio.disabled = true;
+                }
+
+                if (selected === correctVal) {
+                    score++;
+                }
+
+                // Find the label text for the correct answer
+                let correctLabelText = correctVal;
+                for (let radio of radios) {
+                    const label = radio.closest('label');
+                    if (radio.value === correctVal && label) {
+                        correctLabelText = label.textContent.trim();
+                        label.classList.add('highlight-correct');
+                    } else if (radio.value === selected && selected !== correctVal && label) {
+                        label.classList.add('highlight-wrong');
+                    }
+                }
+
+                // Insert answer box after the options div
+                const optionsDiv = document.querySelector(`.options [name="${qKey}"]`)?.closest('.options');
+                if (optionsDiv) {
+                    const box = document.createElement('div');
+                    box.className = 'correct-answer-box';
+                    box.textContent = correctLabelText;
+                    optionsDiv.insertAdjacentElement('afterend', box);
+                }
+            }
+
+            const total = 44;
+            const percent = Math.round((score / total) * 100);
+            let grade = percent >= 80 ? '🎉 Xuất sắc!' : percent >= 60 ? '👍 Khá tốt!' : '📚 Cần ôn thêm!';
+            document.getElementById('score').innerHTML =
+                `Bạn đạt <strong>${score}/${total}</strong> điểm (${percent}%) &nbsp;${grade}`;
+
+            // Scroll to score
+            document.getElementById('score').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
