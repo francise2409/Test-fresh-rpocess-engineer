@@ -3,611 +3,689 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Part A – Theory Quiz (40 points) | IMA Gas Field</title>
+    <title>Hệ Thống Đánh Giá Kiến Thức Kỹ Sư Công Nghệ & Technical Safety (Offshore)</title>
+    <!-- Tailwind CSS CDN for modern and professional UI -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
-        .container { max-width: 1100px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h1 { color: #003366; text-align: center; }
-        .section { margin-bottom: 40px; }
-        .section h2 { background: #003366; color: white; padding: 10px; border-radius: 5px; }
-        .question { margin-bottom: 20px; padding: 15px; background: #f9f9f9; border-left: 5px solid #003366; }
-        .options label { display: block; margin: 8px 0; cursor: pointer; }
-        .score { font-size: 1.2em; font-weight: bold; color: #003366; margin-top: 20px; }
-        button { background: #003366; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
-        button:hover { background: #005599; }
-        .correct { color: green; font-weight: bold; }
-        .wrong { color: red; }
-        .correct-answer-box {
-            margin-top: 10px;
-            padding: 8px 12px;
-            background: #e6f4ea;
-            border-left: 4px solid #28a745;
-            border-radius: 4px;
-            color: #155724;
-            font-weight: bold;
-            font-size: 0.95em;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
         }
-        .correct-answer-box::before {
-            content: "✅ Đáp án đúng: ";
+        #gauge-circle {
+            transition: stroke-dashoffset 1s ease-out, stroke 0.3s ease;
         }
-        label.highlight-correct {
-            background: #d4edda;
-            border-radius: 4px;
-            padding: 2px 6px;
-            color: #155724;
-            font-weight: bold;
-        }
-        label.highlight-wrong {
-            color: #721c24;
-            text-decoration: line-through;
+        @media print {
+            header, footer, #setup-screen, #quiz-screen, .no-print {
+                display: none !important;
+            }
+            body {
+                background: #ffffff;
+            }
+            main {
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            #result-screen {
+                display: block !important;
+                box-shadow: none;
+                border: none;
+                padding: 0;
+            }
+            .review-card {
+                break-inside: avoid;
+            }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Part A – Theory Quiz (40 points)</h1>
-        <p style="text-align:center; color:#666;">Dựa trên P&amp;ID IMA HP Separator (NG-IMA-11-DORS-318009) và các tài liệu chuẩn (API 14C, Shutdown Philosophy, C&amp;E, Safe Chart...)</p>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-slate-800 text-white shadow-md p-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-2 md:mb-0">
+                <span class="text-2xl">⚓</span>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight">Hệ Thống Đánh Giá Kỹ Sư Công nghệ và An toàn (bộ đề 600 câu)</h1>
+                    <p class="text-xs text-slate-300">Dựa trên tiêu chuẩn API 2000, API 14C, API 520, Shell DEP 31.38.01.25 & NORSOK P-100</p>
+                </div>
+            </div>
+            <div class="text-sm font-semibold bg-slate-700 px-3 p-1.5 rounded-lg border border-slate-600">
+                Phân cấp: Engineer (200 câu) | Senior (200 câu) | Lead (200 câu)
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-4xl w-full mx-auto p-4 my-6">
         
-        <!-- SECTION 1: PFD, P&ID reading -->
-        <div class="section">
-            <h2>1. PFD, P&amp;ID reading – symbols, line numbers, legend (8 câu / 8 điểm)</h2>
-            
-            <div class="question">
-                <p><strong>Câu 1:</strong> Trên P&amp;ID, thiết bị V-8151 có tag đầy đủ là gì?</p>
-                <div class="options">
-                    <label><input type="radio" name="q1" value="A"> A. V-8151 IMA HP Separator</label>
-                    <label><input type="radio" name="q1" value="B"> B. V-8151 – IMA High Pressure Separator</label>
-                    <label><input type="radio" name="q1" value="C"> C. V8151 – HP Separator</label>
-                    <label><input type="radio" name="q1" value="D"> D. Separator V-8151</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 2:</strong> Ký hiệu “FC” trên van thể hiện chức năng gì?</p>
-                <div class="options">
-                    <label><input type="radio" name="q2" value="A"> A. Fail Close</label>
-                    <label><input type="radio" name="q2" value="B"> B. Fail Open</label>
-                    <label><input type="radio" name="q2" value="C"> C. Flow Control</label>
-                    <label><input type="radio" name="q2" value="D"> D. Fail Safe</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 3:</strong> Khi nào sử dụng DBB trong bản vẽ P&amp;ID?</p>
-                <div class="options">
-                    <label><input type="radio" name="q3" value="A"> A. Rating Class > 600 </label>
-                    <label><input type="radio" name="q3" value="B"> B. Rating class < 600 </label>
-                    <label><input type="radio" name="q3" value="C"> C. Toxic liquid</label>
-                    <label><input type="radio" name="q3" value="D"> D. A and C </label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 4:</strong> Ký hiệu “NC” trên van nghĩa là gì?</p>
-                <div class="options">
-                    <label><input type="radio" name="q4" value="A"> A. Normally Closed</label>
-                    <label><input type="radio" name="q4" value="B"> B. Normally Open</label>
-                    <label><input type="radio" name="q4" value="C"> C. No Control</label>
-                    <label><input type="radio" name="q4" value="D"> D. Non-Return Check</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 5:</strong> Trên P&amp;ID có bao nhiêu bơm condensate (P-8151 A/B)?</p>
-                <div class="options">
-                    <label><input type="radio" name="q5" value="A"> A. 1</label>
-                    <label><input type="radio" name="q5" value="B"> B. 2</label>
-                    <label><input type="radio" name="q5" value="C"> C. 3</label>
-                    <label><input type="radio" name="q5" value="D"> D. 4</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 6:</strong> Ký hiệu “ESD” trên van thể hiện van thuộc hệ thống nào?</p>
-                <div class="options">
-                    <label><input type="radio" name="q6" value="A"> A. Emergency Shutdown Valve</label>
-                    <label><input type="radio" name="q6" value="B"> B. Emergency Stop Device</label>
-                    <label><input type="radio" name="q6" value="C"> C. Electrical Shutdown</label>
-                    <label><input type="radio" name="q6" value="D"> D. Equipment Shutdown</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 7:</strong> Dòng “6”-B-81024-B45 trên P&amp;ID thuộc class nào?</p>
-                <div class="options">
-                    <label><input type="radio" name="q7" value="A"> A. Class B45</label>
-                    <label><input type="radio" name="q7" value="B"> B. Class B</label>
-                    <label><input type="radio" name="q7" value="C"> C. Class 45</label>
-                    <label><input type="radio" name="q7" value="D"> D. Không xác định được</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 8:</strong> Đường PSV inlet kích cỡ như thế nào so với inlet orifce PSV?</p>
-                <div class="options">
-                    <label><input type="radio" name="q8" value="A"> A. Nhỏ hơn</label>
-                    <label><input type="radio" name="q8" value="B"> B. Bằng</label>
-                    <label><input type="radio" name="q8" value="C"> C. Nhỏ hơn hoặc bằng</label>
-                    <label><input type="radio" name="q8" value="D"> D. Lớn hơn hoặc bằng</label>
-                </div>
-            </div>
-        </div>
+        <!-- Setup Screen -->
+        <section id="setup-screen" class="bg-white rounded-xl shadow-lg border border-slate-200 p-6 md:p-8">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-3 flex items-center">
+                <span>⚙️ Đóng cấu hình bài thi</span>
+            </h2>
 
-        <!-- SECTION 2: API 14C -->
-        <div class="section">
-            <h2>2. API 14C – Safety devices, required protection per equipment (6 câu / 6 điểm)</h2>
-            
-            <div class="question">
-                <p><strong>Câu 9:</strong> Theo API 14C, Thiết bị an toàn PSV có thể bỏ khỏi thiết kế flowline trong trường hợp nào?</p>
-                <div class="options">
-                    <label><input type="radio" name="q9" value="A"> A. Không được bỏ</label>
-                    <label><input type="radio" name="q9" value="B"> B. Khi MAWP nhỏ hơn áp suất thiết kế </label>
-                    <label><input type="radio" name="q9" value="C"> C. Đường óng được thiết kế với MAWP lớn hơn áp suất đóng giếng</label>
-                    <label><input type="radio" name="q9" value="D"> D. Được bảo vệ bởi 1 PSV ở hạ nguồn và giữa có thiết bị hạn chế dòng chảy</label>
-                </div>
+            <div class="mb-6">
+                <label for="candidate-name" class="block text-sm font-bold text-slate-700 mb-2">Họ và tên thí sinh <span class="font-normal text-slate-400">(tuỳ chọn, sẽ hiển thị trên báo cáo kết quả)</span></label>
+                <input type="text" id="candidate-name" placeholder="Nhập họ tên..." class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-lg p-2.5 focus:ring-blue-500 focus:border-blue-500" />
             </div>
-            
-            <div class="question">
-                <p><strong>Câu 10:</strong> API 14C yêu cầu van một chiều cho pump (FSV) có thể bỏ được không?</p>
-                <div class="options">
-                    <label><input type="radio" name="q10" value="A"> A. Được nếu chủ đầu tư cho phép</label>
-                    <label><input type="radio" name="q10" value="B"> B. Không được bỏ</label>
-                    <label><input type="radio" name="q10" value="C"> C. Được nếu thay thế bằng 2 con van cô lập</label>
-                   
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 11:</strong> Thiết bị nào theo API 14C phải có Temperature Safety High (TSH)?</p>
-                <div class="options">
-                    <label><input type="radio" name="q11" value="A"> A. Heater / Fired equipment</label>
-                    <label><input type="radio" name="q11" value="B"> B. Separator only</label>
-                    <label><input type="radio" name="q11" value="C"> C. Pump</label>
-                    <label><input type="radio" name="q11" value="D"> D. Valve</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 12:</strong> Theo API 14C, van ESD trên separator phải được kích hoạt bởi?</p>
-                <div class="options">
-                    <label><input type="radio" name="q12" value="A"> A. PSH + LSL + TSH</label>
-                    <label><input type="radio" name="q12" value="B"> B. Chỉ PSH</label>
-                    <label><input type="radio" name="q12" value="C"> C. Chỉ LSL</label>
-                    <label><input type="radio" name="q12" value="D"> D. Manual only</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 13:</strong> Thiết bị PSL theo API 14C ở đầu hút của pump có thể bỏ trong trường hợp nào ?</p>
-                <div class="options">
-                    <label><input type="radio" name="q13" value="A"> A. Không được bỏ</label>
-                    <label><input type="radio" name="q13" value="B"> B. Bơm vận hành thủ công và có người giám sát liên tục</label>
-                    <label><input type="radio" name="q13" value="C"> C. Đã có biện pháp containment (chứa chất lỏng) đầy đủ</label>
-                    <label><input type="radio" name="q13" value="D"> D. B + C </label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 14:</strong> API 14C quy định Level Safety High (LSH) dùng để bảo vệ?</p>
-                <div class="options">
-                    <label><input type="radio" name="q14" value="A"> A. Overfill protection</label>
-                    <label><input type="radio" name="q14" value="B"> B. Dry run protection</label>
-                    <label><input type="radio" name="q14" value="C"> C. Pressure protection</label>
-                    <label><input type="radio" name="q14" value="D"> D. Temperature protection</label>
-                </div>
-            </div>
-        </div>
 
-        <!-- SECTION 3: Piping specification -->
-        <div class="section">
-            <h2>3. Piping specification – pipe class, material, rating (5 câu / 5 điểm)</h2>
-            
-            <div class="question">
-                <p><strong>Câu 15:</strong> Class F03 trên P&amp;ID thường tương ứng với?</p>
-                <div class="options">
-                    <label><input type="radio" name="q15" value="A"> A. 150# rating</label>
-                    <label><input type="radio" name="q15" value="B"> B. 300# rating</label>
-                    <label><input type="radio" name="q15" value="C"> C. 600# rating</label>
-                    <label><input type="radio" name="q15" value="D"> D. 900# rating</label>
+            <div class="mb-6">
+                <label class="block text-sm font-bold text-slate-700 mb-2">Bước 1: Bộ đề câu hỏi (tự động tải khi lên GitHub Pages)</label>
+                <div class="flex items-center justify-center w-full">
+                    <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-slate-300 border-dashed rounded-lg cursor-pointer bg-slate-50 hover:bg-slate-100">
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg class="w-8 h-8 mb-4 text-slate-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                            </svg>
+                            <p class="mb-2 text-sm text-slate-500" id="file-status"><span class="font-semibold">Đang tải bộ đề...</span></p>
+                            <p class="text-xs text-slate-400">Nếu tự động tải thất bại (vd. mở file trực tiếp trên máy), nhấn vào đây để chọn tệp .json thủ công</p>
+                        </div>
+                        <input type="file" id="file-input" class="hidden" accept=".json" />
+                    </label>
                 </div>
             </div>
-            
-            <div class="question">
-                <p><strong>Câu 16:</strong> Material “CS” trên P&amp;ID nghĩa là?</p>
-                <div class="options">
-                    <label><input type="radio" name="q16" value="A"> A. Carbon Steel</label>
-                    <label><input type="radio" name="q16" value="B"> B. Stainless Steel</label>
-                    <label><input type="radio" name="q16" value="C"> C. Cast Steel</label>
-                    <label><input type="radio" name="q16" value="D"> D. Chrome Steel</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 17:</strong> Pipe class “W” thường dùng cho?</p>
-                <div class="options">
-                    <label><input type="radio" name="q17" value="A"> A. Gas service</label>
-                    <label><input type="radio" name="q17" value="B"> B. Water service</label>
-                    <label><input type="radio" name="q17" value="C"> C. Condensate service</label>
-                    <label><input type="radio" name="q17" value="D"> D. Flare service</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 18:</strong> Rating 600# phù hợp với áp suất thiết kế khoảng?</p>
-                <div class="options">
-                    <label><input type="radio" name="q18" value="A"> A. 93 barg</label>
-                    <label><input type="radio" name="q18" value="B"> B. 40 barg</label>
-                    <label><input type="radio" name="q18" value="C"> C. 10 barg</label>
-                    <label><input type="radio" name="q18" value="D"> D. 200 barg</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 19:</strong> Trên P&amp;ID, line 18"-P-81001-H03 thuộc class nào?</p>
-                <div class="options">
-                    <label><input type="radio" name="q19" value="A"> A. Class 150</label>
-                    <label><input type="radio" name="q19" value="B"> B. Class 600</label>
-                    <label><input type="radio" name="q19" value="C"> C. Class 900</label>
-                    <label><input type="radio" name="q19" value="D"> D. Class 1500 </label>
-                </div>
-            </div>
-        </div>
 
-        <!-- SECTION 4: Instrument -->
-        <div class="section">
-            <h2>4. Instrument – tags, control philosophy, alarm types (5 câu / 5 điểm)</h2>
-            
-            <div class="question">
-                <p><strong>Câu 20:</strong> Tag “PT-8151” trên P&amp;ID là?</p>
-                <div class="options">
-                    <label><input type="radio" name="q20" value="A"> A. Pressure Transmitter</label>
-                    <label><input type="radio" name="q20" value="B"> B. Pressure Switch</label>
-                    <label><input type="radio" name="q20" value="C"> C. Pressure Indicator</label>
-                    <label><input type="radio" name="q20" value="D"> D. Pressure Control Valve</label>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Bước 2: Chọn cấp độ kỹ sư</label>
+                    <select id="level-select" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-lg p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        <option value="all">Tất cả cấp độ (Mix 600 câu)</option>
+                        <option value="normal">Engineer (200 câu Bình Thường - Factual)</option>
+                        <option value="medium">Senior Engineer (200 câu Trung Bình - Sizing & Design)</option>
+                        <option value="hard">Lead Engineer / Technical Safety (200 câu Khó - Scenarios & Codes)</option>
+                    </select>
                 </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 21:</strong> Alarm “81-LAHH”-514 nghĩa là?</p>
-                <div class="options">
-                    <label><input type="radio" name="q21" value="A"> A. High High alarm and trip/shut down of inlet flow</label>
-                    <label><input type="radio" name="q21" value="B"> B. High High alarm and trip/shut down of outlet gas </label>
-                    <label><input type="radio" name="q21" value="C"> C. High alarm and no action </label>
-                    <label><input type="radio" name="q21" value="D"> D. High High alarm and trip pump</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 22:</strong> Tag “LIC” trên separator thể hiện?</p>
-                <div class="options">
-                    <label><input type="radio" name="q22" value="A"> A. Level Indicator Control </label>
-                    <label><input type="radio" name="q22" value="B"> B. Level Switch Low Low</label>
-                    <label><input type="radio" name="q22" value="C"> C. Low Level Alarm only</label>
-                    <label><input type="radio" name="q22" value="D"> D. Low Level Alarm trip</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 23:</strong> Chữ “HOLD” trên van nghĩa là?</p>
-                <div class="options">
-                    <label><input type="radio" name="q23" value="A"> A. Vui lòng xem chú thích hold, có thể hold về size, có thể hold về vị trí</label>
-                    <label><input type="radio" name="q23" value="B"> B. Van tự động đóng</label>
-                    <label><input type="radio" name="q23" value="C"> C. Van tự động mở</label>
-                    <label><input type="radio" name="q23" value="D"> D. Van giữ nguyên vị trí khi mất tín hiệu</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 24:</strong> Tag “ESD” trên van thể hiện?</p>
-                <div class="options">
-                    <label><input type="radio" name="q24" value="A"> A. Emergency Shutdown Valve</label>
-                    <label><input type="radio" name="q24" value="B"> B. Electrical Shutdown</label>
-                    <label><input type="radio" name="q24" value="C"> C. Equipment Shutdown Device</label>
-                    <label><input type="radio" name="q24" value="D"> D. Emergency Stop</label>
-                </div>
-            </div>
-        </div>
 
-        <!-- SECTION 5: Shutdown hierarchy -->
-        <div class="section">
-            <h2>5. Shutdown hierarchy &amp; ESD levels (4 câu / 4 điểm)</h2>
-            
-            <div class="question">
-                <p><strong>Câu 25:</strong> ESD-1 là mức shutdown nào?</p>
-                <div class="options">
-                    <label><input type="radio" name="q25" value="A"> A. Plant wide shutdown (cao nhất)</label>
-                    <label><input type="radio" name="q25" value="B"> B. Unit shutdown</label>
-                    <label><input type="radio" name="q25" value="C"> C. Equipment shutdown</label>
-                    <label><input type="radio" name="q25" value="D"> D. Local shutdown</label>
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Bước 3: Số lượng câu hỏi</label>
+                    <select id="quantity-select" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-lg p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                        <option value="15-mixed">Đề cân bằng (15 câu: 5 Dễ + 5 TB + 5 Khó)</option>
+                        <option value="10">Thử thách nhanh (10 câu)</option>
+                        <option value="20">Tiêu chuẩn kiểm tra (20 câu)</option>
+                        <option value="50">Đánh giá chuyên sâu (50 câu)</option>
+                        <option value="100">Bản kiểm tra toàn diện (100 câu)</option>
+                        <option value="all">Tất cả câu hỏi phù hợp</option>
+                    </select>
+                    <p id="qty-hint" class="text-xs text-slate-400 mt-1">Chế độ cân bằng sẽ tự động lấy đều 3 cấp độ, bỏ qua lựa chọn "Chọn cấp độ" ở trên.</p>
                 </div>
             </div>
-            
-            <div class="question">
-                <p><strong>Câu 26:</strong> Van SDV thuộc ESD-2 thì mức shutdown là?</p>
-                <div class="options">
-                    <label><input type="radio" name="q26" value="A"> A. Unit level</label>
-                    <label><input type="radio" name="q26" value="B"> B. Plant wide</label>
-                    <label><input type="radio" name="q26" value="C"> C. Equipment level</label>
-                    <label><input type="radio" name="q26" value="D"> D. Local only</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 27:</strong> PSD (Process Shutdown) là mức nào so với ESD?</p>
-                <div class="options">
-                    <label><input type="radio" name="q27" value="A"> A. Thấp hơn ESD</label>
-                    <label><input type="radio" name="q27" value="B"> B. Cao hơn ESD</label>
-                    <label><input type="radio" name="q27" value="C"> C. Bằng ESD</label>
-                    <label><input type="radio" name="q27" value="D"> D. Không liên quan</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 28:</strong> PRESSURE/VACUUM RELIEF VALVE thường dùng cho?</p>
-                <div class="options">
-                    <label><input type="radio" name="q28" value="A"> A. Tank có áp</label>
-                    <label><input type="radio" name="q28" value="B"> B. tank khí quyển</label>
-                    <label><input type="radio" name="q28" value="C"> C. Bơm nước</label>
-                    <label><input type="radio" name="q28" value="D"> D. Máy nén</label>
-                </div>
-            </div>
-        </div>
 
-        <!-- SECTION 6: Cause & Effect -->
-        <div class="section">
-            <h2>6. Cause &amp; Effect matrix logic (4 câu / 4 điểm)</h2>
-            
-            <div class="question">
-                <p><strong>Câu 29:</strong> Trong C&amp;E matrix, “Cause” là?</p>
-                <div class="options">
-                    <label><input type="radio" name="q29" value="A"> A. Initiator (PT, LT, TSH...)</label>
-                    <label><input type="radio" name="q29" value="B"> B. Action (valve close)</label>
-                    <label><input type="radio" name="q29" value="C"> C. Alarm</label>
-                    <label><input type="radio" name="q29" value="D"> D. Setpoint</label>
+            <div class="mb-6">
+                <label class="block text-sm font-bold text-slate-700 mb-2">Bước 4: Chế độ làm bài</label>
+                <div class="flex gap-4">
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" name="mode-radio" value="instant" checked class="w-4 h-4 text-blue-600">
+                        <span class="text-sm font-medium text-slate-700">Luyện tập (Xem đáp án/giải thích ngay lập tức)</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" name="mode-radio" value="exam" class="w-4 h-4 text-blue-600">
+                        <span class="text-sm font-medium text-slate-700">Thi cử (Chỉ hiển thị kết quả sau khi nộp bài)</span>
+                    </label>
                 </div>
             </div>
-            
-            <div class="question">
-                <p><strong>Câu 30:</strong> “Effect” trong C&amp;E matrix là?</p>
-                <div class="options">
-                    <label><input type="radio" name="q30" value="A"> A. Hành động (valve close, trip pump...)</label>
-                    <label><input type="radio" name="q30" value="B"> B. Nguyên nhân</label>
-                    <label><input type="radio" name="q30" value="C"> C. Alarm</label>
-                    <label><input type="radio" name="q30" value="D"> D. Setpoint</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 31:</strong> Một Cause có thể có nhiều Effect?</p>
-                <div class="options">
-                    <label><input type="radio" name="q31" value="A"> A. Đúng</label>
-                    <label><input type="radio" name="q31" value="B"> B. Sai</label>
-                    <label><input type="radio" name="q31" value="C"> C. Chỉ 1 Effect</label>
-                    <label><input type="radio" name="q31" value="D"> D. Không có Effect</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 32:</strong> C&amp;E matrix được xây dựng sau tài liệu nào?</p>
-                <div class="options">
-                    <label><input type="radio" name="q32" value="A"> A. Shutdown Hierarchy</label>
-                    <label><input type="radio" name="q32" value="B"> B. P&amp;ID</label>
-                    <label><input type="radio" name="q32" value="C"> C. Safe Chart</label>
-                    <label><input type="radio" name="q32" value="D"> D. Equipment datasheet</label>
-                </div>
-            </div>
-        </div>
 
-        <!-- SECTION 7: Safe chart -->
-        <div class="section">
-            <h2>7. Safe chart – operating envelope, setpoints (4 câu / 4 điểm)</h2>
-            
-            <div class="question">
-                <p><strong>Câu 33:</strong> Safe Chart thể hiện vùng nào?</p>
-                <div class="options">
-                    <label><input type="radio" name="q33" value="A"> A. Normal operating + Alarm + Trip</label>
-                    <label><input type="radio" name="q33" value="B"> B. Chỉ trip points</label>
-                    <label><input type="radio" name="q33" value="C"> C. Chỉ alarm</label>
-                    <label><input type="radio" name="q33" value="D"> D. Chỉ design pressure</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 34:</strong> Setpoint “HH” trên Safe Chart thường là?</p>
-                <div class="options">
-                    <label><input type="radio" name="q34" value="A"> A. High High trip</label>
-                    <label><input type="radio" name="q34" value="B"> B. High alarm</label>
-                    <label><input type="radio" name="q34" value="C"> C. Normal high</label>
-                    <label><input type="radio" name="q34" value="D"> D. Low trip</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 35:</strong> Safe Chart được vẽ sau tài liệu nào?</p>
-                <div class="options">
-                    <label><input type="radio" name="q35" value="A"> A. C&amp;E Matrix</label>
-                    <label><input type="radio" name="q35" value="B"> B. Shutdown Hierarchy</label>
-                    <label><input type="radio" name="q35" value="C"> C. P&amp;ID</label>
-                    <label><input type="radio" name="q35" value="D"> D. HAZOP</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 36:</strong> Operating envelope trên Safe Chart bao gồm?</p>
-                <div class="options">
-                    <label><input type="radio" name="q36" value="A"> A. Normal + Alarm + Trip zone</label>
-                    <label><input type="radio" name="q36" value="B"> B. Chỉ normal operating</label>
-                    <label><input type="radio" name="q36" value="C"> C. Chỉ design limit</label>
-                    <label><input type="radio" name="q36" value="D"> D. Chỉ MAWP</label>
-                </div>
-            </div>
-        </div>
+            <button id="start-btn" disabled class="w-full bg-slate-400 text-white font-bold py-3 px-4 rounded-lg cursor-not-allowed transition duration-200" onclick="startQuiz()">
+                Hãy tải tệp JSON lên để bắt đầu
+            </button>
+        </section>
 
-        <!-- SECTION 8: Relief & Flare -->
-        <div class="section">
-            <h2>8. Relief &amp; Flare – scenarios, API 520/521 basics (4 câu / 4 điểm)</h2>
-            
-            <div class="question">
-                <p><strong>Câu 37:</strong> API 520 dùng để?</p>
-                <div class="options">
-                    <label><input type="radio" name="q37" value="A"> A. Thiết kế Pressure Relief Valve</label>
-                    <label><input type="radio" name="q37" value="B"> B. Thiết kế flare system</label>
-                    <label><input type="radio" name="q37" value="C"> C. Thiết kế separator</label>
-                    <label><input type="radio" name="q37" value="D"> D. Thiết kế bơm</label>
-                </div>
+        <!-- Quiz Screen -->
+        <section id="quiz-screen" class="hidden bg-white rounded-xl shadow-lg border border-slate-200 p-6">
+            <!-- Progress Bar -->
+            <div class="flex justify-between items-center text-sm font-semibold text-slate-500 mb-2">
+                <span id="level-badge" class="px-2.5 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">LEVEL</span>
+                <span id="progress-text">Câu hỏi 1 / 20</span>
             </div>
-            
-            <div class="question">
-                <p><strong>Câu 38:</strong> API 521 dùng để?</p>
-                <div class="options">
-                    <label><input type="radio" name="q38" value="A"> A. Pressure-relieving and Depressuring Systems</label>
-                    <label><input type="radio" name="q38" value="B"> B. Relief valve sizing</label>
-                    <label><input type="radio" name="q38" value="C"> C. Flare stack design</label>
-                    <label><input type="radio" name="q38" value="D"> D. Pipe class</label>
-                </div>
+            <div class="w-full bg-slate-200 rounded-full h-2.5 mb-6">
+                <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style="width: 5%"></div>
             </div>
-            
-            <div class="question">
-                <p><strong>Câu 39:</strong> Scenario “Blocked outlet” cần relief cho trường hợp?</p>
-                <div class="options">
-                    <label><input type="radio" name="q39" value="A"> A. Control valve hỏng</label>
-                    <label><input type="radio" name="q39" value="B"> B. Người vận hành quên mở van</label>
-                    <label><input type="radio" name="q39" value="C"> C. Người vận hành quên đóng van</label>
-                    <label><input type="radio" name="q39" value="D"> D. Giãn nở nhiệt</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 40:</strong> “Fire case” theo API 521 là?</p>
-                <div class="options">
-                    <label><input type="radio" name="q40" value="A"> A. Relief do hỏa hoạn</label>
-                    <label><input type="radio" name="q40" value="B"> B. Relief do áp suất cao</label>
-                    <label><input type="radio" name="q40" value="C"> C. Relief do mức cao</label>
-                    <label><input type="radio" name="q40" value="D"> D. Relief do nhiệt độ cao</label>
-                </div>
-            </div>
-        </div>
 
-        <!-- SECTION 9: Equipment datasheet -->
-        <div class="section">
-            <h2>9. Equipment datasheet – pressure vessel, MAWP, nozzles (4 câu / 4 điểm)</h2>
-            
-            <div class="question">
-                <p><strong>Câu 41:</strong> MAWP là?</p>
-                <div class="options">
-                    <label><input type="radio" name="q41" value="A"> A. Maximum Allowable Working Pressure</label>
-                    <label><input type="radio" name="q41" value="B"> B. Minimum Allowable Working Pressure</label>
-                    <label><input type="radio" name="q41" value="C"> C. Maximum Allowable Temperature</label>
-                    <label><input type="radio" name="q41" value="D"> D. Design Pressure</label>
-                </div>
+            <!-- Question and Category -->
+            <div class="mb-4">
+                <span id="category-badge" class="text-xs font-bold uppercase tracking-wider text-slate-400">API STANDARD 2000</span>
+                <h3 id="question-text" class="text-lg md:text-xl font-bold text-slate-800 mt-1">Câu hỏi ở đây?</h3>
             </div>
-            
-            <div class="question">
-                <p><strong>Câu 42:</strong> Trên datasheet V-8151, Design Pressure là bao nhiêu?</p>
-                <div class="options">
-                    <label><input type="radio" name="q42" value="A"> A. 10 barg</label>
-                    <label><input type="radio" name="q42" value="B"> B. 18 barg</label>
-                    <label><input type="radio" name="q42" value="C"> C. 4.2 barg</label>
-                    <label><input type="radio" name="q42" value="D"> D. 80°C</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 43:</strong> Nozzle trên pressure vessel dùng để?</p>
-                <div class="options">
-                    <label><input type="radio" name="q43" value="A"> A. Kết nối pipe, instrument, manhole</label>
-                    <label><input type="radio" name="q43" value="B"> B. Chỉ nối pipe</label>
-                    <label><input type="radio" name="q43" value="C"> C. Chỉ lắp manhole</label>
-                    <label><input type="radio" name="q43" value="D"> D. Chỉ lắp relief valve</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p><strong>Câu 44:</strong> MAWP luôn lớn hơn Design Pressure?</p>
-                <div class="options">
-                    <label><input type="radio" name="q44" value="A"> A. Đúng</label>
-                    <label><input type="radio" name="q44" value="B"> B. Sai</label>
-                    <label><input type="radio" name="q44" value="C"> C. Bằng nhau</label>
-                    <label><input type="radio" name="q44" value="D"> D. Không liên quan</label>
-                </div>
-            </div>
-        </div>
 
-        <div style="text-align:center; margin-top:30px;">
-            <button onclick="submitQuiz()">Nộp bài &amp; Xem kết quả</button>
-            <div class="score" id="score"></div>
-        </div>
-    </div>
+            <!-- Options Form -->
+            <div id="options-container" class="space-y-3 mb-6">
+                <!-- Programmatically generated options -->
+            </div>
 
+            <!-- Feedback Alert (Instant mode only) -->
+            <div id="feedback-container" class="hidden p-4 mb-6 rounded-lg border">
+                <div class="flex items-center space-x-2 font-bold mb-1">
+                    <span id="feedback-icon">✔️</span>
+                    <span id="feedback-title">Chính xác!</span>
+                </div>
+                <p id="explanation-text" class="text-sm text-slate-700"></p>
+            </div>
+
+            <!-- Actions buttons -->
+            <div class="flex justify-between items-center border-t pt-4">
+                <button id="prev-btn" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-2 px-4 rounded-lg transition duration-200" onclick="prevQuestion()">
+                    Trước đó
+                </button>
+                <div class="flex space-x-2">
+                    <button id="submit-ans-btn" class="hidden bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-6 rounded-lg transition duration-200" onclick="submitAnswer()">
+                        Xác nhận
+                    </button>
+                    <button id="next-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-200" onclick="nextQuestion()">
+                        Tiếp theo
+                    </button>
+                    <button id="finish-btn" class="hidden bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition duration-200" onclick="finishQuiz()">
+                        Nộp bài thi
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Result Screen -->
+        <section id="result-screen" class="hidden bg-white rounded-xl shadow-lg border border-slate-200 p-6 md:p-8">
+
+            <!-- Report Letterhead -->
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 pb-6 mb-8 border-b-2 border-slate-800">
+                <div>
+                    <div class="flex items-center gap-2 text-slate-500 text-xs font-bold uppercase tracking-widest">
+                        <span>⚓</span><span>Báo cáo đánh giá năng lực kỹ sư offshore</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-800 mt-1">Kết quả bài đánh giá</h2>
+                </div>
+                <div class="text-sm text-slate-600 md:text-right space-y-0.5">
+                    <div><span class="text-slate-400">Thí sinh:</span> <span id="report-candidate" class="font-bold text-slate-800">Ẩn danh</span></div>
+                    <div><span class="text-slate-400">Ngày làm bài:</span> <span id="report-date" class="font-semibold">--</span></div>
+                    <div><span class="text-slate-400">Cấu hình đề:</span> <span id="report-config" class="font-semibold">--</span></div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-8 bg-slate-50 rounded-xl p-6 border border-slate-200 mb-8">
+                <!-- Score Gauge -->
+                <div class="relative w-36 h-36 shrink-0">
+                    <svg viewBox="0 0 120 120" class="w-full h-full -rotate-90">
+                        <circle cx="60" cy="60" r="52" stroke="#e2e8f0" stroke-width="12" fill="none" />
+                        <circle id="gauge-circle" cx="60" cy="60" r="52" stroke="#2563eb" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" />
+                    </svg>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <span id="score-percentage" class="text-3xl font-black text-slate-800">0%</span>
+                        <span id="score-fraction" class="text-xs font-semibold text-slate-500 mt-0.5">0 / 20 đúng</span>
+                    </div>
+                </div>
+
+                <div class="h-px w-full md:h-20 md:w-px bg-slate-300"></div>
+
+                <!-- Tier + Breakdown -->
+                <div class="flex-grow w-full text-center md:text-left">
+                    <div class="text-slate-500 font-bold text-xs uppercase tracking-wider">Phân loại kỹ sư phù hợp</div>
+                    <div id="engineer-tier" class="text-2xl md:text-3xl font-extrabold text-slate-800 mt-1">CHƯA XÁC ĐỊNH</div>
+                    <p id="tier-desc" class="text-xs text-slate-500 mt-1 mb-4">Căn cứ trên độ khó câu hỏi và tỷ lệ đúng đạt được.</p>
+
+                    <div id="level-breakdown" class="space-y-2 text-left">
+                        <!-- Programmatically populated per-level progress bars -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Question Review -->
+            <div class="mb-8">
+                <h3 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Chi tiết từng câu hỏi</h3>
+                <div id="review-container" class="space-y-3">
+                    <!-- Programmatically populated list of questions with correct/incorrect markers -->
+                </div>
+            </div>
+
+            <div class="no-print flex flex-col sm:flex-row justify-center gap-3 border-t pt-6">
+                <button class="bg-slate-700 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-lg transition duration-200 flex items-center justify-center gap-2" onclick="window.print()">
+                    <span>🖨️</span><span>In / Xuất PDF báo cáo</span>
+                </button>
+                <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200" onclick="resetQuiz()">
+                    Làm bài kiểm tra mới
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 text-xs py-4 border-t border-slate-700 text-center">
+        <p class="max-w-6xl mx-auto px-4">Process discipline_Version 1.0</p>
+    </footer>
+
+    <!-- Core App Logic JS -->
     <script>
-        function submitQuiz() {
-            let score = 0;
-            const answers = {
-                q1: "A", q2: "A", q3: "D", q4: "A", q5: "B",
-                q6: "A", q7: "A", q8: "D", q9: "C", q10: "B",
-                q11: "A", q12: "A", q13: "D", q14: "A", q15: "C",
-                q16: "A", q17: "B", q18: "A", q19: "D", q20: "A",
-                q21: "A", q22: "A", q23: "A", q24: "A", q25: "A",
-                q26: "A", q27: "A", q28: "B", q29: "A", q30: "A",
-                q31: "A", q32: "A", q33: "A", q34: "A", q35: "A",
-                q36: "A", q37: "A", q38: "A", q39: "B", q40: "A",
-                q41: "A", q42: "B", q43: "A", q44: "A"
-            };
+        let fullQuestionDb = [];
+        let activeQuestions = [];
+        let userAnswers = []; // stores selected option index
+        let visitedQuestions = []; // tracks if answer submitted for instant mode
+        let currentQuestionIdx = 0;
+        let examMode = 'instant';
 
-            // Remove any previously shown answer boxes (if re-submitting)
-            document.querySelectorAll('.correct-answer-box').forEach(el => el.remove());
-            document.querySelectorAll('label.highlight-correct, label.highlight-wrong').forEach(el => {
-                el.classList.remove('highlight-correct', 'highlight-wrong');
+        const fileInput = document.getElementById('file-input');
+        const fileStatus = document.getElementById('file-status');
+        const startBtn = document.getElementById('start-btn');
+        const levelSelect = document.getElementById('level-select');
+        const quantitySelect = document.getElementById('quantity-select');
+
+        // Name of the question bank file, expected to sit next to this HTML file in the repo
+        const QUESTION_BANK_FILE = 'quiz_questions_v3.json';
+
+        function applyLoadedQuestions(data, sourceLabel) {
+            if (!(data && data.questions && Array.isArray(data.questions))) {
+                throw new Error("Tệp không đúng định dạng bộ đề.");
+            }
+            fullQuestionDb = data.questions;
+            fileStatus.innerHTML = `<span class="text-green-600 font-semibold">${sourceLabel}: ${fullQuestionDb.length} câu hỏi!</span>`;
+            startBtn.disabled = false;
+            startBtn.classList.remove('bg-slate-400', 'cursor-not-allowed');
+            startBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+            startBtn.textContent = "Bắt đầu bài trắc nghiệm ngay";
+        }
+
+        // Try to auto-load the question bank from the same folder (works when hosted, e.g. GitHub Pages).
+        // Silently falls back to manual upload if this fails (e.g. opened as a local file:// page).
+        async function autoLoadQuestions() {
+            try {
+                const resp = await fetch(QUESTION_BANK_FILE, { cache: 'no-store' });
+                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                const data = await resp.json();
+                applyLoadedQuestions(data, 'Đã tự động tải bộ đề');
+            } catch (err) {
+                fileStatus.innerHTML = `<span class="font-semibold">Nhấn để chọn tệp</span> hoặc kéo thả vào đây`;
+                console.log('Auto-load bỏ qua (không tìm thấy file hoặc đang mở offline):', err.message);
+            }
+        }
+        autoLoadQuestions();
+
+        // Handle JSON loading
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                try {
+                    const data = JSON.parse(evt.target.result);
+                    applyLoadedQuestions(data, 'Đã tải thành công (thủ công)');
+                } catch (err) {
+                    fileStatus.innerHTML = `<span class="text-red-600 font-semibold">Lỗi: Tệp JSON bị hỏng hoặc sai định cấu trúc!</span>`;
+                    alert("Lỗi phân tích cú pháp tệp JSON. Vui lòng tải lên đúng tệp quiz_questions_v3.json");
+                    startBtn.disabled = true;
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        // Toggle level-select availability when balanced 15-question mode is picked
+        function syncLevelSelectAvailability() {
+            const isMixed = quantitySelect.value === '15-mixed';
+            levelSelect.disabled = isMixed;
+            if (isMixed) {
+                levelSelect.value = 'all';
+                levelSelect.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                levelSelect.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+        quantitySelect.addEventListener('change', syncLevelSelectAvailability);
+        syncLevelSelectAvailability();
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function startQuiz() {
+            const selectedLevel = levelSelect.value;
+            const selectedQty = quantitySelect.value;
+            examMode = document.querySelector('input[name="mode-radio"]:checked').value;
+
+            if (selectedQty === '15-mixed') {
+                // Balanced draw: 5 normal + 5 medium + 5 hard
+                const levels = ['normal', 'medium', 'hard'];
+                const picked = [];
+                for (const lvl of levels) {
+                    const pool = shuffleArray(fullQuestionDb.filter(q => q.level === lvl));
+                    if (pool.length < 5) {
+                        alert(`Không đủ câu hỏi cấp độ ${lvl.toUpperCase()} (cần 5, hiện có ${pool.length}). Vui lòng chọn chế độ khác.`);
+                        return;
+                    }
+                    picked.push(...pool.slice(0, 5));
+                }
+                activeQuestions = shuffleArray(picked);
+            } else {
+                // Filter questions by level
+                let filtered = [];
+                if (selectedLevel === 'all') {
+                    filtered = [...fullQuestionDb];
+                } else {
+                    filtered = fullQuestionDb.filter(q => q.level === selectedLevel);
+                }
+
+                if (filtered.length === 0) {
+                    alert("Không có câu hỏi nào tương thích với bộ lọc này!");
+                    return;
+                }
+
+                // Shuffle questions to ensure randomization
+                shuffleArray(filtered);
+
+                // Select quantity
+                let qty = filtered.length;
+                if (selectedQty !== 'all') {
+                    qty = Math.min(parseInt(selectedQty), filtered.length);
+                }
+                activeQuestions = filtered.slice(0, qty);
+            }
+
+            // Reset quiz states
+            userAnswers = new Array(activeQuestions.length).fill(null);
+            visitedQuestions = new Array(activeQuestions.length).fill(false);
+            currentQuestionIdx = 0;
+
+            // Switch screens
+            document.getElementById('setup-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = activeQuestions[currentQuestionIdx];
+            
+            // Text & Meta update
+            document.getElementById('level-badge').textContent = q.level.toUpperCase();
+            if(q.level === 'normal') {
+                document.getElementById('level-badge').className = "px-2.5 py-1 bg-green-100 text-green-800 text-xs rounded-full font-bold";
+            } else if(q.level === 'medium') {
+                document.getElementById('level-badge').className = "px-2.5 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full font-bold";
+            } else {
+                document.getElementById('level-badge').className = "px-2.5 py-1 bg-red-100 text-red-800 text-xs rounded-full font-bold";
+            }
+
+            document.getElementById('category-badge').textContent = q.category;
+            document.getElementById('progress-text').textContent = `Câu hỏi ${currentQuestionIdx + 1} / ${activeQuestions.length}`;
+            
+            const progressPercent = ((currentQuestionIdx + 1) / activeQuestions.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+
+            document.getElementById('question-text').textContent = q.question;
+
+            // Render options
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            const isSubmitted = visitedQuestions[currentQuestionIdx];
+            const savedAns = userAnswers[currentQuestionIdx];
+
+            q.options.forEach((opt, idx) => {
+                const label = document.createElement('label');
+                let cardClass = "flex items-center p-4 rounded-lg border-2 border-slate-200 cursor-pointer hover:bg-slate-50 transition duration-200";
+                
+                // Styling if already selected / submitted
+                if (savedAns === idx) {
+                    cardClass = "flex items-center p-4 rounded-lg border-2 border-blue-500 bg-blue-50 cursor-pointer transition duration-200";
+                }
+
+                if (examMode === 'instant' && isSubmitted) {
+                    if (idx === q.correct_index) {
+                        cardClass = "flex items-center p-4 rounded-lg border-2 border-green-500 bg-green-50 cursor-not-allowed transition duration-200";
+                    } else if (savedAns === idx) {
+                        cardClass = "flex items-center p-4 rounded-lg border-2 border-red-500 bg-red-50 cursor-not-allowed transition duration-200";
+                    } else {
+                        cardClass = "flex items-center p-4 rounded-lg border-2 border-slate-200 bg-slate-50 cursor-not-allowed transition duration-200";
+                    }
+                }
+
+                label.className = cardClass;
+                
+                const charCode = String.fromCharCode(65 + idx); // A, B, C, D
+                
+                label.innerHTML = `
+                    <input type="radio" name="opt-radio" value="${idx}" ${savedAns === idx ? 'checked' : ''} ${examMode === 'instant' && isSubmitted ? 'disabled' : ''} class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-slate-300" onchange="selectOption(${idx})">
+                    <span class="ml-3 font-bold text-slate-800">${charCode}.</span>
+                    <span class="ml-2 font-medium text-slate-700">${opt}</span>
+                `;
+                optionsContainer.appendChild(label);
             });
 
-            for (let i = 1; i <= 44; i++) {
-                const qKey = 'q' + i;
-                const correctVal = answers[qKey];
-                const radios = document.getElementsByName(qKey);
-                let selected = null;
+            // Handle bottom action buttons
+            document.getElementById('prev-btn').disabled = currentQuestionIdx === 0;
+            document.getElementById('prev-btn').className = currentQuestionIdx === 0 
+                ? "bg-slate-100 text-slate-400 font-bold py-2 px-4 rounded-lg cursor-not-allowed"
+                : "bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-2 px-4 rounded-lg transition duration-200";
 
-                for (let radio of radios) {
-                    if (radio.checked) {
-                        selected = radio.value;
-                    }
-                    // Disable radio after submit
-                    radio.disabled = true;
+            // Instant mode extra container
+            const feedbackContainer = document.getElementById('feedback-container');
+            if (examMode === 'instant' && isSubmitted) {
+                feedbackContainer.classList.remove('hidden');
+                document.getElementById('explanation-text').textContent = q.explanation;
+                
+                if (savedAns === q.correct_index) {
+                    feedbackContainer.className = "p-4 mb-6 rounded-lg border border-green-200 bg-green-50";
+                    document.getElementById('feedback-title').className = "text-green-800 font-bold";
+                    document.getElementById('feedback-title').textContent = "Trả lời chính xác!";
+                    document.getElementById('feedback-icon').textContent = "✔️";
+                } else {
+                    feedbackContainer.className = "p-4 mb-6 rounded-lg border border-red-200 bg-red-50";
+                    document.getElementById('feedback-title').className = "text-red-800 font-bold";
+                    document.getElementById('feedback-title').textContent = `Sai rồi! Đáp án đúng là ${String.fromCharCode(65 + q.correct_index)}`;
+                    document.getElementById('feedback-icon').textContent = "❌";
                 }
+                
+                document.getElementById('submit-ans-btn').classList.add('hidden');
+                toggleNextButtons();
+            } else if (examMode === 'instant') {
+                feedbackContainer.classList.add('hidden');
+                document.getElementById('submit-ans-btn').classList.remove('hidden');
+                document.getElementById('submit-ans-btn').disabled = savedAns === null;
+                document.getElementById('submit-ans-btn').className = savedAns === null
+                    ? "bg-slate-300 text-slate-400 font-bold py-2 px-6 rounded-lg cursor-not-allowed"
+                    : "bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-6 rounded-lg transition duration-200";
+                
+                document.getElementById('next-btn').classList.add('hidden');
+                document.getElementById('finish-btn').classList.add('hidden');
+            } else {
+                // Exam Mode
+                feedbackContainer.classList.add('hidden');
+                document.getElementById('submit-ans-btn').classList.add('hidden');
+                toggleNextButtons();
+            }
+        }
 
-                if (selected === correctVal) {
-                    score++;
+        function toggleNextButtons() {
+            if (currentQuestionIdx === activeQuestions.length - 1) {
+                document.getElementById('next-btn').classList.add('hidden');
+                document.getElementById('finish-btn').classList.remove('hidden');
+            } else {
+                document.getElementById('next-btn').classList.remove('hidden');
+                document.getElementById('finish-btn').classList.add('hidden');
+            }
+        }
+
+        function selectOption(idx) {
+            if (examMode === 'instant' && visitedQuestions[currentQuestionIdx]) return;
+            userAnswers[currentQuestionIdx] = idx;
+            renderQuestion();
+        }
+
+        function submitAnswer() {
+            if (userAnswers[currentQuestionIdx] === null) return;
+            visitedQuestions[currentQuestionIdx] = true;
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIdx < activeQuestions.length - 1) {
+                currentQuestionIdx++;
+                renderQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIdx > 0) {
+                currentQuestionIdx--;
+                renderQuestion();
+            }
+        }
+
+        function finishQuiz() {
+            // Confirm submit
+            const unanswered = userAnswers.filter(ans => ans === null).length;
+            if (unanswered > 0) {
+                if (!confirm(`Bạn vẫn còn ${unanswered} câu chưa trả lời. Bạn có thực sự muốn nộp bài thi không?`)) {
+                    return;
                 }
-
-                // Find the label text for the correct answer
-                let correctLabelText = correctVal;
-                for (let radio of radios) {
-                    const label = radio.closest('label');
-                    if (radio.value === correctVal && label) {
-                        correctLabelText = label.textContent.trim();
-                        label.classList.add('highlight-correct');
-                    } else if (radio.value === selected && selected !== correctVal && label) {
-                        label.classList.add('highlight-wrong');
-                    }
-                }
-
-                // Insert answer box after the options div
-                const optionsDiv = document.querySelector(`.options [name="${qKey}"]`)?.closest('.options');
-                if (optionsDiv) {
-                    const box = document.createElement('div');
-                    box.className = 'correct-answer-box';
-                    box.textContent = correctLabelText;
-                    optionsDiv.insertAdjacentElement('afterend', box);
+            } else {
+                if (!confirm("Bạn có chắc chắn muốn nộp bài kiểm tra này không?")) {
+                    return;
                 }
             }
 
-            const total = 44;
-            const percent = Math.round((score / total) * 100);
-            let grade = percent >= 80 ? '🎉 Xuất sắc!' : percent >= 60 ? '👍 Khá tốt!' : '📚 Cần ôn thêm!';
-            document.getElementById('score').innerHTML =
-                `Bạn đạt <strong>${score}/${total}</strong> điểm (${percent}%) &nbsp;${grade}`;
+            // Calculate scores
+            let score = 0;
+            activeQuestions.forEach((q, idx) => {
+                if (userAnswers[idx] === q.correct_index) {
+                    score++;
+                }
+            });
 
-            // Scroll to score
-            document.getElementById('score').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const percent = Math.round((score / activeQuestions.length) * 100);
+
+            // Tier Assessment
+            let tier = "CHƯA ĐẠT";
+            let tierDesc = "Cần tiếp tục ôn tập kỹ lưỡng lý thuyết và học hỏi kinh nghiệm.";
+            let tierColor = "#dc2626"; // red
+
+            // Check based on active questions level composition
+            if (percent >= 85) {
+                tier = "LEAD ENGINEER";
+                tierDesc = "Năng lực xuất sắc! Khả năng tư duy hệ thống và phân tích rủi ro an toàn biển cực tốt. Sẵn sàng dẫn dắt đội ngũ kỹ thuật.";
+                tierColor = "#059669"; // emerald
+            } else if (percent >= 65) {
+                tier = "SENIOR ENGINEER";
+                tierDesc = "Hiểu rõ các kỹ thuật tính toán và an toàn cốt lõi. Khả năng thiết kế độc lập tốt.";
+                tierColor = "#2563eb"; // blue
+            } else if (percent >= 45) {
+                tier = "OFFSHORE ENGINEER";
+                tierDesc = "Có kiến thức nền tảng đạt yêu cầu. Cần thêm cơ hội cọ xát công việc thiết kế thực tế dưới sự giám sát.";
+                tierColor = "#d97706"; // amber
+            }
+
+            document.getElementById('score-percentage').textContent = `${percent}%`;
+            document.getElementById('score-fraction').textContent = `${score} / ${activeQuestions.length} câu đúng`;
+            document.getElementById('engineer-tier').textContent = tier;
+            document.getElementById('engineer-tier').style.color = tierColor;
+            document.getElementById('tier-desc').textContent = tierDesc;
+
+            // Score gauge ring (circumference = 2 * PI * r, r=52)
+            const circumference = 2 * Math.PI * 52;
+            const gaugeCircle = document.getElementById('gauge-circle');
+            gaugeCircle.style.stroke = tierColor;
+            gaugeCircle.style.strokeDasharray = `${circumference}`;
+            gaugeCircle.style.strokeDashoffset = `${circumference * (1 - percent / 100)}`;
+
+            // Report letterhead meta
+            const candidateName = document.getElementById('candidate-name').value.trim();
+            document.getElementById('report-candidate').textContent = candidateName || 'Ẩn danh';
+            document.getElementById('report-date').textContent = new Date().toLocaleString('vi-VN');
+            const configLabel = quantitySelect.selectedOptions[0].text;
+            const modeLabel = examMode === 'instant' ? 'Luyện tập' : 'Thi cử';
+            document.getElementById('report-config').textContent = `${configLabel} · ${modeLabel}`;
+
+            // Per-level breakdown (Dễ / Trung bình / Khó)
+            const levelMeta = {
+                normal: { label: 'Dễ (Engineer)', color: '#16a34a' },
+                medium: { label: 'Trung bình (Senior)', color: '#d97706' },
+                hard:   { label: 'Khó (Lead)', color: '#dc2626' }
+            };
+            const levelStats = { normal: { correct: 0, total: 0 }, medium: { correct: 0, total: 0 }, hard: { correct: 0, total: 0 } };
+            activeQuestions.forEach((q, idx) => {
+                const s = levelStats[q.level];
+                if (!s) return;
+                s.total++;
+                if (userAnswers[idx] === q.correct_index) s.correct++;
+            });
+
+            const breakdownContainer = document.getElementById('level-breakdown');
+            breakdownContainer.innerHTML = '';
+            Object.keys(levelMeta).forEach(lvl => {
+                const s = levelStats[lvl];
+                if (s.total === 0) return;
+                const meta = levelMeta[lvl];
+                const lvlPercent = Math.round((s.correct / s.total) * 100);
+                const row = document.createElement('div');
+                row.innerHTML = `
+                    <div class="flex justify-between text-xs font-semibold text-slate-600 mb-0.5">
+                        <span>${meta.label}</span>
+                        <span>${s.correct}/${s.total} (${lvlPercent}%)</span>
+                    </div>
+                    <div class="w-full bg-slate-200 rounded-full h-2">
+                        <div class="h-2 rounded-full" style="width:${lvlPercent}%; background-color:${meta.color};"></div>
+                    </div>
+                `;
+                breakdownContainer.appendChild(row);
+            });
+
+            // Render review details
+            const reviewContainer = document.getElementById('review-container');
+            reviewContainer.innerHTML = '';
+
+            activeQuestions.forEach((q, idx) => {
+                const userAns = userAnswers[idx];
+                const isCorrect = userAns === q.correct_index;
+
+                const card = document.createElement('div');
+                card.className = `review-card p-4 rounded-lg border ${isCorrect ? 'border-green-200 bg-green-50/50' : 'border-red-200 bg-red-50/50'}`;
+
+                const statusChip = isCorrect
+                    ? `<span class="shrink-0 w-6 h-6 rounded-full bg-green-600 text-white text-xs font-bold flex items-center justify-center">✔</span>`
+                    : `<span class="shrink-0 w-6 h-6 rounded-full bg-red-600 text-white text-xs font-bold flex items-center justify-center">✘</span>`;
+
+                const levelBadgeClass = q.level === 'normal'
+                    ? 'bg-green-100 text-green-800'
+                    : q.level === 'medium'
+                        ? 'bg-yellow-100 text-yellow-800'
+                        : 'bg-red-100 text-red-800';
+
+                const userChoiceLetter = userAns !== null ? String.fromCharCode(65 + userAns) : null;
+                const correctChoiceLetter = String.fromCharCode(65 + q.correct_index);
+
+                card.innerHTML = `
+                    <div class="flex items-start gap-3">
+                        ${statusChip}
+                        <div class="flex-grow min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-slate-400">Câu ${idx + 1}</span>
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${levelBadgeClass}">${q.level}</span>
+                                <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">${q.category}</span>
+                            </div>
+                            <div class="text-sm font-bold text-slate-800">${q.question}</div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2">
+                                <div class="text-xs">Lựa chọn của bạn: <span class="font-bold ${isCorrect ? 'text-green-700' : 'text-red-700'}">${userChoiceLetter ? `${userChoiceLetter}. ${q.options[userAns]}` : 'Chưa chọn'}</span></div>
+                                <div class="text-xs">Đáp án đúng: <span class="font-bold text-green-700">${correctChoiceLetter}. ${q.options[q.correct_index]}</span></div>
+                            </div>
+                            <div class="text-xs text-slate-600 bg-white border rounded p-2.5 mt-2.5">
+                                <span class="font-bold text-slate-700">Giải thích chi tiết:</span> ${q.explanation}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                reviewContainer.appendChild(card);
+            });
+
+            // Switch Screen
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+        }
+
+        function resetQuiz() {
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('setup-screen').classList.remove('hidden');
+            fileInput.value = '';
+            fileStatus.innerHTML = `<span class="text-green-600 font-semibold">Bộ đề đã sẵn sàng: ${fullQuestionDb.length} câu hỏi.</span>`;
         }
     </script>
 </body>
