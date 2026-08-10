@@ -12,6 +12,10 @@
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
         }
+        .brand-title {
+            font-family: 'Aptos', 'Inter', sans-serif;
+            color: #fbbf24;
+        }
         #gauge-circle {
             transition: stroke-dashoffset 1s ease-out, stroke 0.3s ease;
         }
@@ -45,23 +49,35 @@
     <header class="bg-slate-800 text-white shadow-md p-4">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
             <div class="flex items-center space-x-3 mb-2 md:mb-0">
-                <span class="text-2xl">⚓</span>
+                <img src="ptsc-logo.jpg" alt="PTSC Offshore Services" class="h-12 w-auto rounded bg-white p-1 shrink-0" />
                 <div>
-                    <h1 class="text-xl font-bold tracking-tight">Hệ Thống Đánh Giá Kỹ Sư Công nghệ và An toàn (bộ đề 600 câu)</h1>
+                    <h1 class="brand-title text-xl font-bold tracking-tight">Hệ Thống Đánh Giá Kỹ Sư Công nghệ và An toàn (bộ đề 600 câu)</h1>
                     <p class="text-xs text-slate-300">Dựa trên tiêu chuẩn API 2000, API 14C, API 520, Shell DEP 31.38.01.25 & NORSOK P-100</p>
                 </div>
             </div>
             <div class="text-sm font-semibold bg-slate-700 px-3 p-1.5 rounded-lg border border-slate-600">
-                Phân cấp: Engineer (200 câu) | Senior (200 câu) | Lead (200 câu)
+                Bộ phận: Công nghệ - An Toàn
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="flex-grow max-w-4xl w-full mx-auto p-4 my-6">
-        
+
+        <!-- Lock Screen -->
+        <section id="lock-screen" class="bg-white rounded-xl shadow-lg border border-slate-200 p-6 md:p-8 max-w-md mx-auto text-center">
+            <div class="text-4xl mb-3">🔒</div>
+            <h2 class="text-xl font-bold text-slate-800 mb-1">Khu vực yêu cầu mật khẩu</h2>
+            <p class="text-sm text-slate-500 mb-6">Nhập mật khẩu được cấp để truy cập bài đánh giá.</p>
+            <input type="password" id="password-input" placeholder="Mật khẩu..." class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-lg p-2.5 mb-2 text-center focus:ring-blue-500 focus:border-blue-500" />
+            <p id="password-error" class="hidden text-xs text-red-600 font-semibold mb-3">Sai mật khẩu, vui lòng thử lại!</p>
+            <button id="password-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200">
+                Truy cập
+            </button>
+        </section>
+
         <!-- Setup Screen -->
-        <section id="setup-screen" class="bg-white rounded-xl shadow-lg border border-slate-200 p-6 md:p-8">
+        <section id="setup-screen" class="hidden bg-white rounded-xl shadow-lg border border-slate-200 p-6 md:p-8">
             <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-3 flex items-center">
                 <span>⚙️ Đóng cấu hình bài thi</span>
             </h2>
@@ -260,6 +276,40 @@
         let currentQuestionIdx = 0;
         let examMode = 'instant';
 
+        // --- Access password gate ---
+        // Note: this is a client-side-only gate (a light deterrent for a static GitHub Pages
+        // site), not real security — anyone can view-source and read APP_PASSWORD.
+        const APP_PASSWORD = 'pos2026';
+        const lockScreen = document.getElementById('lock-screen');
+        const passwordInput = document.getElementById('password-input');
+        const passwordError = document.getElementById('password-error');
+        const passwordBtn = document.getElementById('password-btn');
+
+        function unlockApp() {
+            sessionStorage.setItem('quizUnlocked', '1');
+            lockScreen.classList.add('hidden');
+            document.getElementById('setup-screen').classList.remove('hidden');
+        }
+
+        function checkPassword() {
+            if (passwordInput.value === APP_PASSWORD) {
+                unlockApp();
+            } else {
+                passwordError.classList.remove('hidden');
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        }
+
+        passwordBtn.addEventListener('click', checkPassword);
+        passwordInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
+
+        if (sessionStorage.getItem('quizUnlocked') === '1') {
+            unlockApp();
+        }
+
         const fileInput = document.getElementById('file-input');
         const fileStatus = document.getElementById('file-status');
         const startBtn = document.getElementById('start-btn');
@@ -273,7 +323,7 @@
             if (!(data && data.questions && Array.isArray(data.questions))) {
                 throw new Error("Tệp không đúng định dạng bộ đề.");
             }
-            fullQuestionDb = data.questions;
+            fullQuestionDb = dedupeQuestions(data.questions);
             fileStatus.innerHTML = `<span class="text-green-600 font-semibold">${sourceLabel}: ${fullQuestionDb.length} câu hỏi!</span>`;
             startBtn.disabled = false;
             startBtn.classList.remove('bg-slate-400', 'cursor-not-allowed');
@@ -328,6 +378,22 @@
         }
         quantitySelect.addEventListener('change', syncLevelSelectAvailability);
         syncLevelSelectAvailability();
+
+        // Collapses questions that are effectively the same (identical wording + options +
+        // correct answer, sometimes only differing by a trailing "(Nhóm N)" tag from how the
+        // bank was generated) so a single quiz never draws the same question twice.
+        function dedupeQuestions(questions) {
+            const seen = new Set();
+            const unique = [];
+            for (const q of questions) {
+                const sig = q.question.trim() + '||' + q.options.join('|') + '||' + q.correct_index;
+                if (!seen.has(sig)) {
+                    seen.add(sig);
+                    unique.push(q);
+                }
+            }
+            return unique;
+        }
 
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
