@@ -197,6 +197,37 @@ var QUESTION_BANK = [];
 var currentSet = [];
 var submitted = false;
 
+// Thay URL bên dưới bằng URL Web App sau khi deploy Google Apps Script.
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby41Guf3ikbqlfIN1fFkhh-ChyOiMZ1_-7RDcFXLtb4G-jhakri650YxldHEeO1a0IYoA/exec";
+
+function requireName(){
+  const name = document.getElementById('userName').value.trim();
+  if(!name){
+    alert('Vui lòng nhập Họ & Tên trước khi làm bài.');
+    document.getElementById('userName').focus();
+    return false;
+  }
+  return true;
+}
+
+function sendResult(score, total){
+  const payload = {
+    name: document.getElementById('userName').value.trim(),
+    userId: document.getElementById('userId').value.trim(),
+    score: score,
+    total: total,
+    percent: Math.round(score / total * 100),
+    mode: document.getElementById('modeSelect').value,
+    timestamp: new Date().toISOString()
+  };
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'text/plain;charset=utf-8'},
+    body: JSON.stringify(payload)
+  }).catch(() => {});
+}
+
 // === PASSWORD ===
 const PASSWORD_PLAIN = "process2026";
 
@@ -379,6 +410,7 @@ function renderQuiz(){
       const lbl = document.getElementById('lbl_' + i + '_' + j);
       lbl.addEventListener('click', function(){
         if(submitted) return;
+        if(!requireName()) return;
         q.options.forEach((o, k) => {
           document.getElementById('lbl_' + i + '_' + k).classList.remove('selected');
         });
@@ -410,6 +442,7 @@ function updateProgress(){
 // === SUBMIT ===
 function submitQuiz(){
   if(submitted) return;
+  if(!requireName()) return;
   let unanswered = 0;
   currentSet.forEach((q, i) => {
     const sel = document.querySelector('input[name="q' + i + '"]:checked');
@@ -486,6 +519,8 @@ function submitQuiz(){
   document.getElementById('newSetBtn').style.display = '';
   document.getElementById('pdfBtn').style.display = '';
   document.getElementById('progressFill').style.width = '100%';
+
+  sendResult(correct, currentSet.length);
 
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
