@@ -1,0 +1,291 @@
+{
+  "quiz_meta": {
+    "title": "Isolation Philosophy Quiz",
+    "subtitle": "Based on Shell DEP 31.38.01.25-Gen. — Piping Process Design Requirements",
+    "version": "1.0",
+    "date": "August 2026",
+    "total_questions": 20,
+    "passing_score": 80,
+    "review_threshold": 50,
+    "time_limit_minutes": null,
+    "scoring": {
+      "below_50": {
+        "label": "Cần ôn lại tiêu chuẩn",
+        "color": "#c0392b",
+        "message": "Bạn cần đọc lại DEP 31.38.01.25-Gen. và ôn tập các khái niệm cơ bản về triết lý cách ly trước khi kiểm tra lại."
+      },
+      "50_to_79": {
+        "label": "Cần cải thiện thêm",
+        "color": "#d35400",
+        "message": "Bạn đã nắm được một số khái niệm cơ bản, nhưng cần ôn tập thêm các phần chi tiết về DVI, bleed sizing, và đặc thù dịch vụ."
+      },
+      "80_to_100": {
+        "label": "Thành thạo — PASS",
+        "color": "#1a6b3c",
+        "message": "Bạn đã nắm vững triết lý cách ly theo Shell DEP. Sẵn sàng áp dụng vào thiết kế P&ID và review vendor package."
+      }
+    }
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Tiêu chuẩn chính của Shell quy định về triết lý và yêu cầu thiết kế cách ly đường ống là:",
+      "options": {
+        "A": "DEP 31.22.05.11-Gen.",
+        "B": "DEP 31.38.01.25-Gen.",
+        "C": "DEP 32.80.10.10-Gen.",
+        "D": "DEP 80.45.10.10-Gen."
+      },
+      "correct": "B",
+      "reference": "DEP 31.38.01.25-Gen. — Piping Process Design Requirements",
+      "explanation": "DEP 31.38.01.25-Gen. là tiêu chuẩn chính của Shell quy định yêu cầu thiết kế công nghệ cho đường ống, bao gồm triết lý cách ly, cấu hình van chặn, và các yêu cầu cách ly theo loại dịch vụ."
+    },
+    {
+      "id": 2,
+      "question": "\"Cách ly dương\" (Positive Isolation) được định nghĩa trong tiêu chuẩn là:",
+      "options": {
+        "A": "Đóng chặt hai van chặn nối tiếp và xả áp suất ở giữa.",
+        "B": "Sử dụng van chặn có chứng chỉ Tight Shut Off (TSO).",
+        "C": "Sự tách biệt vật lý bằng thiết bị như spade hoặc blind.",
+        "D": "Khóa các van ở vị trí đóng bằng xích hoặc khóa vạn năng."
+      },
+      "correct": "C",
+      "reference": "DEP 31.38.01.25-Gen. — Definition of Positive Isolation",
+      "explanation": "Cách ly dương (Positive Isolation) yêu cầu sự tách biệt vật lý hoàn toàn giữa hai phần hệ thống, đạt được bằng spade, blind flange, hoặc removable spool — không phải bằng cách đóng van."
+    },
+    {
+      "id": 3,
+      "question": "Theo tiêu chuẩn, việc đóng van (Closing valves) có được coi là đạt được cách ly dương không?",
+      "options": {
+        "A": "Có, nếu van đó được kiểm tra độ kín định kỳ.",
+        "B": "Không, đóng van không tạo ra sự tách biệt vật lý.",
+        "C": "Có, nếu đó là loại van Double Block and Bleed.",
+        "D": "Chỉ đúng đối với các đường ống có kích thước < DN 50."
+      },
+      "correct": "B",
+      "reference": "DEP 31.38.01.25-Gen. — Positive Isolation requirements",
+      "explanation": "Van dù đóng kín vẫn có thể rò rỉ qua seat hoặc stem — không tạo ra sự tách biệt vật lý. Chỉ có spade, blind, hoặc removable spool mới đạt cách ly dương."
+    },
+    {
+      "id": 4,
+      "question": "Trường hợp nào sau đây BẮT BUỘC phải thực hiện cách ly dương (Positive Isolation)?",
+      "options": {
+        "A": "Khi thực hiện công việc nóng (Hot work) trên đường ống.",
+        "B": "Khi vận hành bình thường nhưng lưu chất có tính ăn mòn.",
+        "C": "Khi thực hiện kiểm tra dụng cụ đo định kỳ trên thiết bị.",
+        "D": "Khi van điều khiển cần được hiệu chỉnh thông số phần mềm."
+      },
+      "correct": "A",
+      "reference": "DEP 31.38.01.25-Gen. — Hot work isolation requirements",
+      "explanation": "Hot work trên đường ống chứa lưu chất nguy hiểm bắt buộc phải có cách ly dương để đảm bảo không có hydrocarbon rò rỉ vào khu vực làm việc."
+    },
+    {
+      "id": 5,
+      "question": "Đối với tất cả các đường ống đi vào hoặc ra khỏi ranh giới nhà máy (Battery Limit), yêu cầu cách ly là:",
+      "options": {
+        "A": "Chỉ cần một van một chiều để ngăn dòng chảy ngược.",
+        "B": "Phải có van chặn và mặt bích để đặt tấm mù (spading).",
+        "C": "Sử dụng van điều khiển có khả năng đóng chặt hoàn toàn.",
+        "D": "Cần lắp đặt trạm đo lưu lượng kết hợp van xả khẩn cấp."
+      },
+      "correct": "B",
+      "reference": "DEP 31.38.01.25-Gen. — Battery Limit isolation",
+      "explanation": "Tại Battery Limit phải có van chặn kèm mặt bích (flanged connection) để có thể đặt spade khi cần cách ly dương giữa các đơn vị hoặc khi bàn giao."
+    },
+    {
+      "id": 6,
+      "question": "Cách ly van đôi (Double Valve Isolation - DVI) bắt buộc cho các đường ống có cấp áp suất ASME từ:",
+      "options": {
+        "A": "Class 150# trở lên.",
+        "B": "Class 300# trở lên.",
+        "C": "Class 600# trở lên.",
+        "D": "Class 900# trở lên."
+      },
+      "correct": "D",
+      "reference": "DEP 31.38.01.25-Gen. — DVI pressure class requirements",
+      "explanation": "DVI bắt buộc từ ASME Class 900# trở lên do hậu quả rò rỉ ở áp suất cao rất nghiêm trọng. Ở các class thấp hơn, DVI có thể được yêu cầu tùy theo loại dịch vụ."
+    },
+    {
+      "id": 7,
+      "question": "Trong dịch vụ lưu chất \"Rất độc - Cấp tính\" (Very toxic - acute), yêu cầu cách ly van là gì?",
+      "options": {
+        "A": "DVI là bắt buộc bất kể cấp áp suất của đường ống đó.",
+        "B": "Chỉ cần một van chặn đơn nếu có lắp thêm van xả khí.",
+        "C": "Cách ly van đơn là đủ nếu đường ống nhỏ hơn DN 50.",
+        "D": "Phải sử dụng van chặn vận hành bằng điện (MOV) từ xa."
+      },
+      "correct": "A",
+      "reference": "DEP 31.38.01.25-Gen. — Toxic service isolation",
+      "explanation": "Với lưu chất rất độc cấp tính, DVI là bắt buộc bất kể class áp suất, vì ngay cả rò rỉ nhỏ cũng có thể gây nguy hiểm tính mạng."
+    },
+    {
+      "id": 8,
+      "question": "Đối với lưu chất dễ cháy (Flashing fluids) ở cấp áp suất > ASME 300#, yêu cầu cách ly là:",
+      "options": {
+        "A": "Cách ly van đơn kèm theo một van một chiều (check valve).",
+        "B": "Cách ly van chặn đôi kèm theo một van xả áp (bleed).",
+        "C": "Một van chặn đơn kết hợp với nắp bịt (blind flange).",
+        "D": "Hệ thống cách ly tự động kết hợp với đầu dò khí cháy."
+      },
+      "correct": "B",
+      "reference": "DEP 31.38.01.25-Gen. — Flashing fluid isolation",
+      "explanation": "Flashing fluids ở áp suất > 300# yêu cầu Double Block and Bleed (DBB) vì khi giảm áp, lưu chất chuyển pha thành hơi dễ cháy — rủi ro cao hơn."
+    },
+    {
+      "id": 9,
+      "question": "Điểm lấy ra của van xả (bleed) dùng để kiểm tra độ kín giữa hai van chặn nên được đặt ở:",
+      "options": {
+        "A": "Phía dưới đáy của đường ống để xả sạch cặn bẩn.",
+        "B": "Phía bên hông đường ống để thuận tiện cho thao tác.",
+        "C": "Phía trên đỉnh của đường ống, đặc biệt với hệ bẩn.",
+        "D": "Bất kỳ vị trí nào thuận tiện cho việc lắp đặt giá đỡ."
+      },
+      "correct": "C",
+      "reference": "DEP 31.38.01.25-Gen. — Bleed valve orientation",
+      "explanation": "Bleed valve nên ở phía trên đỉnh ống — đặc biệt trong hệ bẩn (fouling service) — để tránh tích tụ cặn bẩn làm tắc van xả và mất khả năng kiểm tra."
+    },
+    {
+      "id": 10,
+      "question": "Mục đích chính của van xả (bleed) trong cấu hình Double Block and Bleed là:",
+      "options": {
+        "A": "Dùng làm điểm bơm hóa chất tẩy rửa khi cần vệ sinh ống.",
+        "B": "Kiểm tra xem các van chặn đã đóng kín hoàn toàn chưa.",
+        "C": "Giảm áp suất dư trong đường ống khi bơm đang vận hành.",
+        "D": "Cân bằng áp suất giữa thượng nguồn và hạ nguồn của van."
+      },
+      "correct": "B",
+      "reference": "DEP 31.38.01.25-Gen. — Purpose of bleed valve",
+      "explanation": "Bleed valve cho phép kiểm tra xem van chặn có rò rỉ hay không: nếu mở bleed mà thấy áp hoặc lưu chất ra → van chặn chưa kín."
+    },
+    {
+      "id": 11,
+      "question": "Kích thước của van xả (bleed) giữa hai van chặn DVI được xác định dựa trên tiêu chí:",
+      "options": {
+        "A": "Giữ áp suất ở giữa hai van dưới 0.1 barg khi có rò rỉ.",
+        "B": "Phải bằng chính xác 1/2 đường kính của đường ống chính.",
+        "C": "Đảm bảo tốc độ dòng chảy qua van xả đạt tối thiểu 1 m/s.",
+        "D": "Dựa trên thời gian cần thiết để xả cạn thiết bị trong 5 phút."
+      },
+      "correct": "A",
+      "reference": "DEP 31.38.01.25-Gen. — Bleed valve sizing criteria",
+      "explanation": "Bleed valve phải đủ lớn để duy trì áp suất giữa hai van chặn dưới 0.1 barg ngay cả khi có rò rỉ qua van — đảm bảo cách ly hiệu quả."
+    },
+    {
+      "id": 12,
+      "question": "Hình vẽ dưới đây mô tả cấu hình cách ly nào cho van điều khiển (Control Valve)?\n\n[2 van chặn thượng nguồn] → [Van Điều Khiển] → [2 van chặn hạ nguồn]\nCó van xả (bleed) giữa mỗi cặp van chặn.",
+      "options": {
+        "A": "Cách ly van đơn cho dịch vụ tiện ích thông thường.",
+        "B": "Cách ly van đôi cho dịch vụ rất độc hoặc áp suất cao.",
+        "C": "Cách ly van chặn tích hợp bộ chống xoáy (vortex breaker).",
+        "D": "Cách ly van chặn cho hệ thống xả áp (Relief system)."
+      },
+      "correct": "B",
+      "reference": "DEP 31.38.01.25-Gen. — Figure 8, Control valve DVI arrangement",
+      "explanation": "Cấu hình 2 van chặn + bleed ở cả thượng nguồn và hạ nguồn van điều khiển = DVI arrangement cho dịch vụ rất độc hoặc áp suất cao (≥900#)."
+    },
+    {
+      "id": 13,
+      "question": "Các van hở đầu (Open ended valves) trong dịch vụ lưu chất dễ cháy hoặc rất độc phải:",
+      "options": {
+        "A": "Được gắn thêm biển báo cảnh báo nguy hiểm màu vàng.",
+        "B": "Được trang bị mặt bích mù hoặc nút bịt có ren phù hợp.",
+        "C": "Luôn được khóa ở vị trí mở để tránh tích tụ áp suất dư.",
+        "D": "Kết nối trực tiếp với hệ thống đuốc đốt (Flare system)."
+      },
+      "correct": "B",
+      "reference": "DEP 31.38.01.25-Gen. — Open ended valves",
+      "explanation": "Van hở đầu trong dịch vụ dễ cháy/rất độc phải có blind flange hoặc threaded cap để ngăn rò rỉ ra môi trường khi van mở."
+    },
+    {
+      "id": 14,
+      "question": "Đối với van một chiều (check valve) ở đầu đẩy của bơm, vị trí lắp đặt đúng là:",
+      "options": {
+        "A": "Hạ nguồn (downstream) của van chặn đầu đẩy của bơm.",
+        "B": "Thượng nguồn (upstream) của van chặn đầu đẩy của bơm.",
+        "C": "Lắp trực tiếp trên thân bơm để tiết kiệm không gian ống.",
+        "D": "Lắp ở bất kỳ vị trí nào trên đường ống đẩy đến thiết bị."
+      },
+      "correct": "B",
+      "reference": "DEP 31.38.01.25-Gen. — Pump discharge check valve location",
+      "explanation": "Check valve lắp upstream (giữa bơm và block valve) để bảo vệ bơm khỏi dòng chảy ngược ngay cả khi block valve mở."
+    },
+    {
+      "id": 15,
+      "question": "\"Double Block and Bleed\" tích hợp trong một thân van duy nhất (Integral DBB) có được Shell coi là cách ly an toàn tuyệt đối không?",
+      "options": {
+        "A": "Có, vì nó tiết kiệm không gian và giảm thiểu điểm rò rỉ.",
+        "B": "Không, vì lỗi chung có thể làm cả hai lớp cách ly mất hiệu lực.",
+        "C": "Chỉ đúng nếu van đó được vận hành bằng khí nén (actuated).",
+        "D": "Có, nếu van đó được trang bị thêm bộ giảm chấn thủy lực."
+      },
+      "correct": "B",
+      "reference": "DEP 31.38.01.25-Gen. — Integral DBB limitations",
+      "explanation": "Integral DBB có cả hai seat trong cùng body → common mode failure (hỏng thân van, ăn mòn, biến dạng nhiệt) có thể làm cả hai seal mất kín cùng lúc."
+    },
+    {
+      "id": 16,
+      "question": "Khoảng cách tối thiểu giữa hai van khi dùng làm Double Barrier ra khí quyển cho lưu chất có thể gây đóng băng (như LPG) là:",
+      "options": {
+        "A": "0.1 mét (4 inch).",
+        "B": "0.35 mét (14 inch).",
+        "C": "0.6 mét (24 inch).",
+        "D": "1.0 mét (40 inch)."
+      },
+      "correct": "C",
+      "reference": "DEP 31.38.01.25-Gen. — Minimum spacing for freezing service",
+      "explanation": "LPG và lưu chất đóng băng cần khoảng cách tối thiểu 0.6 m giữa hai van để tránh hiện tượng đóng băng lan sang van thứ hai khi van thứ nhất rò rỉ."
+    },
+    {
+      "id": 17,
+      "question": "Thiết bị nào sau đây KHÔNG được coi là phương tiện để đạt cách ly dương?",
+      "options": {
+        "A": "Van chặn kiểu cổng (Gate valve) có khóa bằng xích.",
+        "B": "Tấm mù (Spade) hoặc mặt bích mù (Blind flange).",
+        "C": "Kính đổi hướng (Spectacle blind) loại xoay được.",
+        "D": "Đoạn ống tháo rời được (Removable spool) kèm mặt bích."
+      },
+      "correct": "A",
+      "reference": "DEP 31.38.01.25-Gen. — Positive isolation devices",
+      "explanation": "Gate valve dù có khóa xích vẫn chỉ là cách ly bằng van — không tạo sự tách biệt vật lý. Spade, blind flange, spectacle blind, và removable spool đều tạo tách biệt vật lý."
+    },
+    {
+      "id": 18,
+      "question": "Đối với các dịch vụ bẩn (fouling service), Shell yêu cầu lắp thêm loại van nào phía trước van TSO (Tight Shut Off) để bảo vệ?",
+      "options": {
+        "A": "Một van một chiều (non-return valve).",
+        "B": "Một van chặn không yêu cầu độ kín tuyệt đối (non-TSO).",
+        "C": "Một van điều tiết lưu lượng kiểu cầu (Globe valve).",
+        "D": "Một van bướm có đệm kín bằng vật liệu elastomer."
+      },
+      "correct": "B",
+      "reference": "DEP 31.38.01.25-Gen. — Fouling service protection",
+      "explanation": "Trong fouling service, van non-TSO lắp upstream để chịu cặn bẩn, bảo vệ bề mặt seal của van TSO phía sau — đảm bảo TSO duy trì độ kín khi cần."
+    },
+    {
+      "id": 19,
+      "question": "Triết lý cách ly của Shell ưu tiên sử dụng loại van nào cho các vị trí chặn (block valves)?",
+      "options": {
+        "A": "Van chặn kiểu dòng thẳng (Straight-through type).",
+        "B": "Van chặn có bộ phận giảm áp thân (Body cavity relief).",
+        "C": "Van điều khiển kết hợp chức năng chặn (Control valve).",
+        "D": "Van kim (Needle valve) để đảm bảo độ kín tối đa."
+      },
+      "correct": "A",
+      "reference": "DEP 31.38.01.25-Gen. — Preferred block valve type",
+      "explanation": "Shell ưu tiên van straight-through (ball, gate) cho block valve vì tổn thất áp thấp, full-bore passage cho pigging, và đóng/mở nhanh."
+    },
+    {
+      "id": 20,
+      "question": "Khi thiết kế cụm van cách ly cho thiết bị đo mức (Level gauge), yêu cầu tối thiểu là:",
+      "options": {
+        "A": "Phải có ít nhất hai van chặn và một van một chiều.",
+        "B": "Kết nối với thiết bị thông qua các van chặn (block valves).",
+        "C": "Sử dụng khớp nối nhanh (quick coupling) để dễ tháo lắp.",
+        "D": "Không cần van chặn nếu thiết bị đo nằm trong vùng an toàn."
+      },
+      "correct": "B",
+      "reference": "DEP 31.38.01.25-Gen. — Level gauge isolation",
+      "explanation": "Level gauge phải kết nối qua block valves để có thể cách ly thiết bị khi bảo trì hoặc thay thế mà không cần shutdown hệ thống."
+    }
+  ]
+}
